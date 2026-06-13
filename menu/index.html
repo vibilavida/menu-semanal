@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú Semanal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+:root {
+  --cream:#F7F3EE;--ink:#1C1A18;--sage:#5C7A5E;--sage-light:#E8EEEA;
+  --terracotta:#C4674A;--terra-light:#FAE8E2;--gold:#B8962E;--gold-light:#FBF4DC;
+  --mist:#8FA3A8;--mist-light:#EDF2F3;--border:#DDD8D1;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.6;}
+
+/* ── OVERLAYS / MODALS ─────────────────────────────── */
+.overlay{position:fixed;inset:0;background:rgba(28,26,24,.65);backdrop-filter:blur(3px);z-index:200;display:flex;align-items:center;justify-content:center;padding:1rem;}
+.overlay.hidden{display:none;}
+.modal{background:white;border-radius:16px;padding:1.75rem;max-width:440px;width:100%;max-height:90vh;overflow-y:auto;}
+.modal h2{font-family:'DM Serif Display',serif;font-size:1.35rem;margin-bottom:.3rem;}
+.modal p{font-size:13px;color:#777;margin-bottom:1.25rem;line-height:1.6;}
+.flabel{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);display:block;margin:.9rem 0 .3rem;}
+.finput{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:.55rem .75rem;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;}
+.finput:focus{border-color:var(--sage);}
+.ftextarea{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:.55rem .75rem;font-size:13px;font-family:inherit;outline:none;resize:vertical;min-height:60px;transition:border-color .2s;}
+.ftextarea:focus{border-color:var(--sage);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;}
+.btn-primary{background:var(--sage);color:white;border:none;border-radius:8px;padding:.6rem 1.1rem;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;}
+.btn-primary:hover{background:#4d6a50;}
+.btn-primary:disabled{opacity:.6;cursor:not-allowed;}
+.btn-sec{background:var(--cream);color:var(--ink);border:1.5px solid var(--border);border-radius:8px;padding:.6rem 1.1rem;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;}
+.btn-sec:hover{background:#ede9e4;}
+.modal-footer{display:flex;gap:.6rem;margin-top:1.25rem;justify-content:flex-end;}
+.meal-edit-block{border:1.5px solid var(--border);border-radius:10px;padding:.85rem 1rem;margin-bottom:.65rem;}
+.meal-edit-block h4{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--mist);margin-bottom:.65rem;}
+
+/* ── EDIT PANEL (slide-in) ─────────────────────────── */
+#edit-panel{position:fixed;inset:0;z-index:300;display:flex;pointer-events:none;}
+#edit-panel.open{pointer-events:all;}
+.edit-backdrop{flex:1;background:rgba(28,26,24,.5);opacity:0;transition:opacity .25s;}
+#edit-panel.open .edit-backdrop{opacity:1;}
+.edit-drawer{width:min(480px,100%);background:white;height:100%;overflow-y:auto;transform:translateX(100%);transition:transform .25s;padding:1.5rem;display:flex;flex-direction:column;}
+#edit-panel.open .edit-drawer{transform:translateX(0);}
+.edit-drawer-title{font-family:'DM Serif Display',serif;font-size:1.2rem;display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-shrink:0;}
+.edit-close{background:none;border:none;font-size:1.1rem;cursor:pointer;color:#aaa;padding:.25rem;}
+.edit-close:hover{color:var(--ink);}
+.edit-body{flex:1;overflow-y:auto;}
+.edit-footer{flex-shrink:0;display:flex;gap:.6rem;padding-top:.75rem;margin-top:.75rem;border-top:1px solid var(--border);}
+
+/* ── TOAST ─────────────────────────────────────────── */
+#toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);padding:.55rem 1.25rem;border-radius:8px;font-size:13px;font-weight:500;z-index:999;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap;}
+#toast.show{opacity:1;}
+#toast.ok{background:#1C1A18;color:white;}
+#toast.err{background:var(--terracotta);color:white;}
+
+/* ── HEADER ─────────────────────────────────────────── */
+header{background:var(--ink);color:var(--cream);padding:2.5rem 2rem 2rem;position:relative;overflow:hidden;}
+header::after{content:'';position:absolute;bottom:0;right:0;width:280px;height:280px;background:radial-gradient(circle,rgba(92,122,94,.3) 0%,transparent 70%);pointer-events:none;}
+.header-actions{position:absolute;top:1.25rem;right:1.25rem;display:flex;gap:.5rem;z-index:10;}
+.hbtn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.35rem .65rem;font-size:12px;color:#D4D0C8;cursor:pointer;}
+.hbtn:hover{background:rgba(255,255,255,.2);}
+.hlabel{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:.5rem;}
+header h1{font-family:'DM Serif Display',serif;font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.15;margin-bottom:.6rem;}
+header h1 em{font-style:italic;color:#9EC7A2;}
+.htags{display:flex;flex-wrap:wrap;gap:.4rem .6rem;margin-top:1rem;}
+.pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:.2rem .65rem;font-size:11px;font-weight:500;color:#D4D0C8;}
+.pill-a{background:rgba(184,150,46,.2);border-color:rgba(184,150,46,.4);color:#F0D98A;}
+.pill-w{background:rgba(196,103,74,.2);border-color:rgba(196,103,74,.4);color:#F4A98A;}
+.mstrip{background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:1rem 2rem;display:flex;flex-wrap:wrap;gap:.75rem 2rem;}
+.mblock .mname{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#666;}
+.mvals{display:flex;gap:1rem;margin-top:.15rem;}
+.mv{font-size:13px;font-weight:600;}
+.mvl{font-size:10px;color:#888;font-weight:400;margin-left:2px;}
+
+/* ── NAV ─────────────────────────────────────────────── */
+nav{background:white;border-bottom:1px solid var(--border);padding:0 2rem;display:flex;overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:100;}
+nav::-webkit-scrollbar{display:none;}
+.tab{padding:.875rem 1rem;font-size:13px;font-weight:500;color:#888;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s;background:none;border-top:none;border-left:none;border-right:none;}
+.tab:hover{color:var(--ink);}
+.tab.active{color:var(--sage);border-bottom-color:var(--sage);}
+
+/* ── MAIN ─────────────────────────────────────────────── */
+main{padding:1.5rem 2rem 4rem;max-width:900px;margin:0 auto;}
+.section{display:none;}.section.active{display:block;}
+.ssub{color:#777;font-size:13px;margin-bottom:1.5rem;}
+.abox{background:var(--gold-light);border:1px solid #e8d07a;border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:13px;color:#7a5e10;}
+.abox strong{display:block;margin-bottom:.25rem;}
+
+/* ── DÍAS ─────────────────────────────────────────────── */
+.dgrid{display:grid;gap:.85rem;}
+.dc{background:white;border-radius:12px;border:1px solid var(--border);overflow:hidden;}
+.dh{padding:.8rem 1.25rem;display:flex;align-items:center;justify-content:space-between;user-select:none;}
+.dh-left{flex:1;cursor:pointer;}
+.dn{font-weight:600;font-size:14px;}
+.dm{font-size:11px;color:#aaa;margin-top:1px;}
+.dr{display:flex;align-items:center;gap:.5rem;}
+.db{font-size:11px;font-weight:600;padding:.18rem .55rem;border-radius:999px;letter-spacing:.04em;}
+.bf{background:var(--terra-light);color:var(--terracotta);}
+.br{background:#F2F2F2;color:#888;}
+.dchev{color:#bbb;font-size:11px;transition:transform .2s;cursor:pointer;}
+.dc.open .dchev{transform:rotate(180deg);}
+.edit-btn{background:none;border:1.5px solid var(--border);border-radius:6px;padding:.2rem .5rem;font-size:11px;cursor:pointer;color:#aaa;transition:all .15s;white-space:nowrap;}
+.edit-btn:hover{border-color:var(--sage);color:var(--sage);}
+.dbody{display:none;border-top:1px solid #F0EDE8;}
+.dc.open .dbody{display:block;}
+.mr{padding:.8rem 1.25rem;border-bottom:1px solid #F5F3F0;position:relative;}
+.mr:last-child{border-bottom:none;}
+.mt{display:grid;grid-template-columns:88px 1fr auto;gap:.5rem;align-items:start;}
+.mtime{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#bbb;padding-top:2px;}
+.tnote{font-size:11px;color:var(--terracotta);font-weight:500;text-transform:none;letter-spacing:0;}
+.mname-r{font-weight:500;font-size:13.5px;}
+.mdesc{font-size:12px;color:#888;margin-top:2px;}
+.mkcal{font-size:12px;font-weight:600;color:var(--sage);white-space:nowrap;}
+.tag{display:inline-block;font-size:10px;border-radius:4px;padding:.1rem .35rem;margin-left:.3rem;vertical-align:middle;}
+.tf{background:var(--mist-light);color:var(--mist);}
+.tb{background:var(--gold-light);color:var(--gold);}
+.tg{background:#FFF0E0;color:#C07020;}
+.fav-btn{background:none;border:none;cursor:pointer;font-size:15px;padding:.1rem .3rem;opacity:.3;transition:opacity .15s,transform .15s;line-height:1;}
+.fav-btn:hover{opacity:.6;}
+.fav-btn.on{opacity:1;}
+.nota-box{background:var(--gold-light);border-left:3px solid var(--gold);padding:.65rem 1rem;font-size:12px;color:#7a5e10;margin:.5rem 1.25rem .5rem;}
+.ss{margin-top:.55rem;display:grid;gap:.5rem;}
+.sp{border-radius:8px;padding:.5rem .65rem;font-size:12px;}
+.sl{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.2rem;}
+.st{color:#444;line-height:1.4;}
+.sk{font-size:10px;color:#999;margin-top:.15rem;}
+
+/* ── BATCH ─────────────────────────────────────────────── */
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.85rem;margin-bottom:1.5rem;}
+.bc{background:white;border-radius:12px;border:1px solid var(--border);padding:1rem;}
+.bi{font-size:1.3rem;margin-bottom:.4rem;}
+.bt{font-weight:600;font-size:13px;margin-bottom:.25rem;}
+.btm{font-size:11px;color:var(--terracotta);font-weight:600;margin-bottom:.3rem;}
+.bd{font-size:12px;color:#666;line-height:1.5;}
+.btp{margin-top:.5rem;font-size:11px;padding:.35rem .55rem;border-radius:6px;background:var(--gold-light);color:#8a6e1a;line-height:1.4;}
+.obox{background:var(--sage-light);border-radius:12px;padding:1.1rem 1.25rem;margin-top:.5rem;}
+.ot{font-weight:600;font-size:13px;color:var(--sage);margin-bottom:.5rem;}
+.ob{font-size:13px;color:#444;line-height:1.9;white-space:pre-line;}
+
+/* ── COMPRA ─────────────────────────────────────────────── */
+.albox{background:var(--gold-light);border:1px solid #e8d07a;border-radius:10px;padding:.9rem 1.1rem;margin-bottom:1.25rem;font-size:13px;color:#7a5e10;}
+.albox strong{display:block;margin-bottom:.3rem;}
+.scat{font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);margin:1.25rem 0 .5rem;padding-bottom:.35rem;border-bottom:1px solid var(--border);}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:.25rem .6rem;}
+.si{display:flex;align-items:center;gap:.45rem;font-size:13px;padding:.3rem 0;cursor:pointer;}
+.sc{width:15px;height:15px;border:1.5px solid var(--border);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px;transition:all .15s;}
+.si.done .sc{background:var(--sage);border-color:var(--sage);color:white;}
+.si.done .stx{text-decoration:line-through;color:#bbb;}
+.sq{color:#bbb;font-size:11px;}
+.wbox{background:var(--terra-light);border-radius:10px;padding:.9rem 1.1rem;margin-top:1.25rem;font-size:13px;color:#8a3a20;white-space:pre-line;}
+.wbox strong{display:block;margin-bottom:.3rem;}
+
+/* ── NUTRICIÓN ─────────────────────────────────────────── */
+.nc{background:white;border-radius:12px;border:1px solid var(--border);padding:1.1rem 1.25rem;margin-bottom:.85rem;}
+.nh{display:flex;align-items:center;gap:.55rem;margin-bottom:.5rem;}
+.ni{font-size:1.1rem;}
+.ntit{font-weight:600;font-size:13.5px;}
+.nb{font-size:13px;color:#555;line-height:1.65;}
+.nb ul{padding-left:1.1rem;margin-top:.35rem;}
+.nb li{margin-bottom:.2rem;}
+
+/* ── HISTÓRICO ─────────────────────────────────────────── */
+.hgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;margin-bottom:1.5rem;}
+.hcard{background:white;border:1.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;cursor:pointer;transition:border-color .15s,box-shadow .15s;}
+.hcard:hover{border-color:var(--sage);box-shadow:0 2px 8px rgba(92,122,94,.15);}
+.hw{font-weight:600;font-size:14px;margin-bottom:.2rem;}
+.ha{font-size:12px;color:var(--sage);font-weight:600;margin-top:.4rem;}
+.hback{display:inline-flex;align-items:center;gap:.4rem;font-size:13px;font-weight:600;color:var(--sage);cursor:pointer;margin-bottom:1.25rem;background:none;border:none;padding:0;font-family:inherit;}
+.hback:hover{text-decoration:underline;}
+.historico-banner{background:var(--mist-light);border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;margin-bottom:1.25rem;font-size:13px;color:var(--mist);font-weight:500;}
+
+/* ── FAVORITOS ─────────────────────────────────────────── */
+.fav-empty{text-align:center;padding:3rem 1rem;color:#bbb;}
+.fav-empty .fei{font-size:2.5rem;display:block;margin-bottom:.75rem;}
+.fgrid{display:grid;gap:.6rem;}
+.fcard{background:white;border:1.5px solid var(--border);border-radius:12px;padding:.85rem 1.1rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;}
+.fn{font-weight:600;font-size:13.5px;}
+.fm{font-size:11px;color:#aaa;margin-top:.1rem;}
+.fd{font-size:12px;color:#666;margin-top:.35rem;line-height:1.5;}
+.fs-date{font-size:11px;color:var(--mist);margin-top:.3rem;}
+.funfav{background:none;border:none;cursor:pointer;font-size:15px;padding:.15rem;opacity:.4;transition:opacity .15s;flex-shrink:0;}
+.funfav:hover{opacity:1;}
+
+@media(max-width:540px){
+  main{padding:1rem 1rem 3rem;}header{padding:1.5rem 1rem 1.25rem;}
+  .mstrip{padding:.85rem 1rem;}nav{padding:0 .75rem;}
+  .mt{grid-template-columns:72px 1fr;}.mkcal{display:none;}
+  .frow{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- SETUP MODAL -->
+<div id="setup-overlay" class="overlay hidden">
+  <div class="modal">
+    <h2>Conectar con GitHub 🔑</h2>
+    <p>Para guardar ediciones y favoritos necesito un token con permiso <code>repo</code>. Se guarda solo en este dispositivo.</p>
+    <label class="flabel">Token de GitHub</label>
+    <input class="finput" id="cfg-token" type="password" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off">
+    <label class="flabel">Repositorio</label>
+    <input class="finput" id="cfg-repo" value="vibilavida/menu-semanal">
+    <div class="modal-footer">
+      <button class="btn-sec" onclick="document.getElementById('setup-overlay').classList.add('hidden')">Cancelar</button>
+      <button class="btn-primary" onclick="saveSetup()">Guardar →</button>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT PANEL -->
+<div id="edit-panel">
+  <div class="edit-backdrop" onclick="closeEdit()"></div>
+  <div class="edit-drawer">
+    <div class="edit-drawer-title">
+      <span id="edit-title">Editar día</span>
+      <button class="edit-close" onclick="closeEdit()">✕</button>
+    </div>
+    <div class="edit-body" id="edit-body"></div>
+    <div class="edit-footer">
+      <button class="btn-sec" onclick="closeEdit()">Cancelar</button>
+      <button class="btn-primary" id="edit-save-btn" onclick="saveEdit()">Guardar en GitHub</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- APP -->
+<header>
+  <div class="header-actions">
+    <button class="hbtn" onclick="openSetup()">⚙️ Token</button>
+  </div>
+  <div class="hlabel" id="header-label">Menú semanal</div>
+  <h1 id="header-title">Cargando…</h1>
+  <div class="htags" id="header-tags"></div>
+</header>
+<div class="mstrip" id="mstrip"></div>
+
+<nav>
+  <button class="tab active" onclick="showTab('menu',this)">📅 Menú</button>
+  <button class="tab" onclick="showTab('batch',this)">🔪 Batch</button>
+  <button class="tab" onclick="showTab('compra',this)">🛒 Compra</button>
+  <button class="tab" onclick="showTab('nutri',this)">💪 Nutrición</button>
+  <button class="tab" onclick="showTab('historico',this)">📚 Histórico</button>
+  <button class="tab" onclick="showTab('favs',this)">⭐ Favoritos</button>
+</nav>
+
+<main>
+  <div id="tab-menu"      class="section active"></div>
+  <div id="tab-batch"     class="section"></div>
+  <div id="tab-compra"    class="section"></div>
+  <div id="tab-nutri"     class="section"></div>
+  <div id="tab-historico" class="section"></div>
+  <div id="tab-favs"      class="section"></div>
+</main>
+
+<script>
+// ── CONFIG ──────────────────────────────────────────────
+const CFG_KEY = 'menu_gh_config';
+function getCfg()   { try { return JSON.parse(localStorage.getItem(CFG_KEY))||{}; } catch { return {}; } }
+function setCfg(c)  { localStorage.setItem(CFG_KEY, JSON.stringify(c)); }
+function hasToken() { const {token,repo}=getCfg(); return !!(token&&repo); }
+
+// ── GITHUB API ───────────────────────────────────────────
+const GH = {
+  base: 'https://api.github.com',
+  h() { const {token}=getCfg(); return { Authorization:`token ${token}`, Accept:'application/vnd.github.v3+json', 'Content-Type':'application/json' }; },
+  async getFile(path) {
+    const {repo}=getCfg();
+    const r = await fetch(`${this.base}/repos/${repo}/contents/${path}`,{headers:this.h()});
+    if (!r.ok) throw new Error(`GitHub ${r.status}: ${path}`);
+    const d = await r.json();
+    return { sha:d.sha, content:JSON.parse(decodeURIComponent(escape(atob(d.content.replace(/\n/g,''))))) };
+  },
+  async putFile(path, content, message) {
+    const {repo}=getCfg();
+    let sha;
+    try { sha=(await this.getFile(path)).sha; } catch {}
+    const body = { message, content:btoa(unescape(encodeURIComponent(JSON.stringify(content,null,2)))), ...(sha?{sha}:{}) };
+    const r = await fetch(`${this.base}/repos/${repo}/contents/${path}`,{method:'PUT',headers:this.h(),body:JSON.stringify(body)});
+    if (!r.ok) { const e=await r.json(); throw new Error(e.message); }
+    return r.json();
+  },
+  async listDir(path) {
+    const {repo}=getCfg();
+    const r = await fetch(`${this.base}/repos/${repo}/contents/${path}`,{headers:this.h()});
+    if (!r.ok) return [];
+    return r.json();
+  }
+};
+
+// ── STATE ────────────────────────────────────────────────
+let MENU=null, FAVS={favoritos:[]}, EDIT_IDX=null;
+
+// ── SETUP ────────────────────────────────────────────────
+function openSetup() {
+  const {token='',repo='vibilavida/menu-semanal'}=getCfg();
+  document.getElementById('cfg-token').value=token;
+  document.getElementById('cfg-repo').value=repo;
+  document.getElementById('setup-overlay').classList.remove('hidden');
+}
+function saveSetup() {
+  const token=document.getElementById('cfg-token').value.trim();
+  const repo=document.getElementById('cfg-repo').value.trim();
+  if (!token||!repo) { toast('Rellena los dos campos','err'); return; }
+  setCfg({token,repo,branch:'main'});
+  document.getElementById('setup-overlay').classList.add('hidden');
+  toast('✅ Token guardado');
+}
+
+// ── TOAST ────────────────────────────────────────────────
+let _tt;
+function toast(msg,type='ok') {
+  const el=document.getElementById('toast');
+  el.textContent=msg; el.className=`show ${type}`;
+  clearTimeout(_tt); _tt=setTimeout(()=>el.className='',3200);
+}
+
+// ── INIT ─────────────────────────────────────────────────
+async function init() {
+  try {
+    const r=await fetch('current.json?t='+Date.now());
+    if (!r.ok) throw new Error('current.json no encontrado');
+    MENU=await r.json();
+  } catch(e) { toast('Error al cargar el menú: '+e.message,'err'); return; }
+  try { const r=await fetch('favoritos.json?t='+Date.now()); FAVS=await r.json(); }
+  catch { FAVS={favoritos:[]}; }
+  renderAll(MENU);
+  if (!hasToken()) openSetup();
+}
+
+// ── RENDER HEADER ────────────────────────────────────────
+function renderAll(menu) {
+  const p=menu.personas||[];
+  const nombres=p.map(x=>x.nombre).join(' & ');
+  document.getElementById('header-label').textContent=`Menú semanal · ${nombres}`;
+  document.title=`Menú · ${nombres}`;
+  const {titulo='',subtitulo='',semana=''}=menu.meta||{};
+  document.getElementById('header-title').innerHTML=
+    `${titulo}<br><em>${subtitulo}</em>`+(semana?`<span style="font-family:'DM Sans',sans-serif;font-size:.85rem;color:#888;font-style:normal"> · ${semana}</span>`:'');
+  document.getElementById('header-tags').innerHTML=
+    (menu.tags||[]).map(t=>`<span class="pill${t.tipo?` pill-${t.tipo}`:''}">${t.texto}</span>`).join('');
+  document.getElementById('mstrip').innerHTML=p.map(p=>{
+    const v=[
+      p.kcal_entreno?`<span class="mv" style="color:${p.color}">${p.kcal_entreno}<span class="mvl">kcal entreno</span></span>`:'',
+      p.kcal_descanso&&p.kcal_descanso!==p.kcal_entreno?`<span class="mv" style="color:${p.color}">${p.kcal_descanso}<span class="mvl">kcal desc.</span></span>`:'',
+      p.proteina?`<span class="mv" style="color:${p.color}">≥${p.proteina}g<span class="mvl">prot</span></span>`:'',
+    ].filter(Boolean).join('');
+    return v?`<div class="mblock"><div class="mname">${p.nombre}${p.objetivo?` · ${p.objetivo}`:''}</div><div class="mvals">${v}</div></div>`:'';
+  }).join('');
+  renderMenuTab(menu);
+  renderBatchTab(menu);
+  renderCompraTab(menu);
+  renderNutriTab(menu);
+  renderFavsTab();
+}
+
+// ── MENÚ TAB ─────────────────────────────────────────────
+function tagHtml(tags) {
+  return (tags||[]).map(t=>({'batch':'<span class="tag tb">⚡batch</span>','gastar':'<span class="tag tg">gastar</span>','congelar':'<span class="tag tf">❄ congela</span>','oficina':'<span class="tag tb">🏢</span>'}[t]||'')).join('');
+}
+function isFav(di,ci) {
+  const id=`${MENU?.meta?.semana_iso||'cur'}-d${di}-c${ci}`;
+  return FAVS.favoritos.some(f=>f.id===id);
+}
+function renderMenuTab(menu) {
+  let h='<p class="ssub">Batch el domingo, recalentar entre semana.</p>';
+  if (menu.alerta_ingredientes) h+=`<div class="abox"><strong>🍌 Ingredientes a gastar esta semana</strong>${menu.alerta_ingredientes}</div>`;
+  h+='<div class="dgrid">';
+  (menu.dias||[]).forEach((dia,di)=>{
+    const ent=dia.tipo==='entreno';
+    h+=`<div class="dc${di===0?' open':''}" id="d${di}">
+      <div class="dh">
+        <div class="dh-left" onclick="td('d${di}')"><div class="dn">${dia.nombre}</div><div class="dm">${dia.resumen}</div></div>
+        <div class="dr">
+          <button class="edit-btn" onclick="openEdit(${di})">✏️ editar</button>
+          <span class="db ${ent?'bf':'br'}">${dia.badge}</span>
+          <span class="dchev" onclick="td('d${di}')">▼</span>
+        </div>
+      </div>
+      <div class="dbody">`;
+    if (dia.nota_especial) h+=`<div class="nota-box">ℹ️ ${dia.nota_especial}</div>`;
+    (dia.comidas||[]).forEach((c,ci)=>{
+      if (c.snacks_personalizados) {
+        const ps=menu.personas||[];
+        const cols=Array(Math.min(ps.length,c.snacks_personalizados.length)).fill('1fr').join(' ');
+        h+=`<div class="mr"><div class="mt"><div class="mtime">Snack</div><div></div></div><div class="ss" style="grid-template-columns:${cols}">`;
+        c.snacks_personalizados.forEach((s,si)=>{
+          const pi=s.persona!==undefined?s.persona:si;
+          const p=ps[pi]||ps[0]||{};
+          h+=`<div class="sp" style="background:${p.color_light||'#f5f5f5'}">
+            <div class="sl" style="color:${p.color||'#888'}">${p.nombre||`P${pi+1}`}</div>
+            <div class="st">${s.texto}${tagHtml(s.tags_comida)}</div>
+            ${s.kcal?`<div class="sk">${s.kcal}</div>`:''}
+          </div>`;
+        });
+        h+='</div></div>';
+      } else {
+        const on=isFav(di,ci);
+        h+=`<div class="mr"><div class="mt">
+          <div class="mtime">${c.momento}${c.tiempo?`<div class="tnote">${c.tiempo}</div>`:''}</div>
+          <div><div class="mname-r">${c.nombre||''}${tagHtml(c.tags_comida)}</div>${c.descripcion?`<div class="mdesc">${c.descripcion}</div>`:''}</div>
+          ${c.kcal?`<div class="mkcal">${c.kcal}</div>`:''}
+        </div>
+        <button class="fav-btn${on?' on':''}" onclick="toggleFav(${di},${ci})" title="${on?'Quitar favorito':'Marcar favorito'}">${on?'⭐':'☆'}</button>
+        </div>`;
+      }
+    });
+    h+='</div></div>';
+  });
+  h+='</div>';
+  document.getElementById('tab-menu').innerHTML=h;
+}
+
+// ── BATCH TAB ────────────────────────────────────────────
+function renderBatchTab(menu) {
+  let h='<p class="ssub">Prepara el domingo, recalienta entre semana.</p><div class="bgrid">';
+  (menu.batch||[]).forEach(b=>{
+    h+=`<div class="bc"><div class="bi">${b.emoji}</div><div class="bt">${b.nombre}</div>
+      <div class="btm">⏱ ${b.tiempo}</div><div class="bd">${b.descripcion}</div>
+      ${b.uso?`<div class="btp">${b.uso}</div>`:''}</div>`;
+  });
+  h+='</div>';
+  if (menu.orden_batch) h+=`<div class="obox"><div class="ot">🕐 Orden eficiente del domingo</div><div class="ob">${menu.orden_batch}</div></div>`;
+  document.getElementById('tab-batch').innerHTML=h;
+}
+
+// ── COMPRA TAB ───────────────────────────────────────────
+function renderCompraTab(menu) {
+  const c=menu.compra;
+  if (!c) { document.getElementById('tab-compra').innerHTML='<p class="ssub">Sin datos.</p>'; return; }
+  let h='<p class="ssub">Toca cada ítem para tacharlo.</p>';
+  if (c.ya_tienes) h+=`<div class="albox"><strong>✅ Ya tienes en casa — no comprar</strong>${c.ya_tienes}</div>`;
+  (c.categorias||[]).forEach(cat=>{
+    h+=`<div class="scat">${cat.nombre}</div><div class="sgrid">`;
+    cat.items.forEach(item=>{
+      h+=`<div class="si" onclick="ts(this)"><div class="sc"></div><span class="stx">${item.texto}${item.cantidad?` <span class="sq">${item.cantidad}</span>`:''}</span></div>`;
+    });
+    h+='</div>';
+  });
+  if (c.orden_consumo) h+=`<div class="wbox"><strong>🗓 Orden de consumo — cero desperdicio</strong>${c.orden_consumo}</div>`;
+  document.getElementById('tab-compra').innerHTML=h;
+}
+
+// ── NUTRICIÓN TAB ────────────────────────────────────────
+function renderNutriTab(menu) {
+  let h='';
+  (menu.personas||[]).forEach(p=>{
+    const v=[p.kcal_entreno?`${p.kcal_entreno} kcal entreno`:'',p.kcal_descanso&&p.kcal_descanso!==p.kcal_entreno?`${p.kcal_descanso} kcal descanso`:'',p.proteina?`≥${p.proteina}g proteína/día`:''].filter(Boolean).join(' · ');
+    h+=`<div class="nc"><div class="nh"><div style="width:22px;height:22px;border-radius:50%;background:${p.color_light};border:2px solid ${p.color};flex-shrink:0"></div><div class="ntit">${p.nombre}${p.objetivo?` — ${p.objetivo}`:''}</div></div>${v?`<div class="nb">${v}</div>`:''}</div>`;
+  });
+  (menu.nutricion||[]).forEach(n=>{
+    h+=`<div class="nc"><div class="nh"><div class="ni">${n.emoji}</div><div class="ntit">${n.titulo}</div></div><div class="nb">${n.texto}</div></div>`;
+  });
+  document.getElementById('tab-nutri').innerHTML=h;
+}
+
+// ── HISTÓRICO TAB ────────────────────────────────────────
+async function renderHistoricoTab() {
+  const el=document.getElementById('tab-historico');
+  el.innerHTML='<p class="ssub">Cargando semanas anteriores…</p>';
+  try {
+    const files=await GH.listDir('menu/historico');
+    const jsons=(Array.isArray(files)?files:[]).filter(f=>f.name.endsWith('.json')).sort((a,b)=>b.name.localeCompare(a.name));
+    if (!jsons.length) { el.innerHTML='<p class="ssub">Aún no hay semanas archivadas. Cuando pase la semana actual, se guardará aquí automáticamente.</p>'; return; }
+    let h='<p class="ssub">Haz clic en una semana para ver el menú completo.</p><div class="hgrid">';
+    jsons.forEach(f=>{
+      const week=f.name.replace('.json','');
+      h+=`<div class="hcard" onclick="loadHistoricoWeek('${f.download_url}','${week}')"><div class="hw">${week}</div><div class="ha">Ver menú →</div></div>`;
+    });
+    h+='</div>';
+    el.innerHTML=h;
+  } catch(e) { el.innerHTML=`<p style="color:var(--terracotta);font-size:13px">Error: ${e.message}</p>`; }
+}
+
+async function loadHistoricoWeek(url, week) {
+  const el=document.getElementById('tab-historico');
+  el.innerHTML='<p class="ssub">Cargando…</p>';
+  try {
+    const r=await fetch(url+'?t='+Date.now()); const menu=await r.json();
+    renderAll(menu); // update header with that week's data
+    let h=`<button class="hback" onclick="renderHistoricoTab();renderAll(MENU)">← Volver al histórico</button>
+      <div class="historico-banner">📚 Semana <strong>${week}</strong> — solo lectura</div>
+      <div class="dgrid">`;
+    (menu.dias||[]).forEach((dia,di)=>{
+      const ent=dia.tipo==='entreno';
+      h+=`<div class="dc${di===0?' open':''}" id="hd${di}">
+        <div class="dh"><div class="dh-left" onclick="td('hd${di}')"><div class="dn">${dia.nombre}</div><div class="dm">${dia.resumen}</div></div>
+        <div class="dr"><span class="db ${ent?'bf':'br'}">${dia.badge}</span><span class="dchev" onclick="td('hd${di}')">▼</span></div></div>
+        <div class="dbody">`;
+      if (dia.nota_especial) h+=`<div class="nota-box">ℹ️ ${dia.nota_especial}</div>`;
+      (dia.comidas||[]).forEach(c=>{
+        if (c.snacks_personalizados) {
+          const ps=menu.personas||[]; const cols=Array(Math.min(ps.length,c.snacks_personalizados.length)).fill('1fr').join(' ');
+          h+=`<div class="mr"><div class="mt"><div class="mtime">Snack</div><div></div></div><div class="ss" style="grid-template-columns:${cols}">`;
+          c.snacks_personalizados.forEach((s,si)=>{ const p=ps[s.persona??si]||{}; h+=`<div class="sp" style="background:${p.color_light||'#f5f5f5'}"><div class="sl" style="color:${p.color||'#888'}">${p.nombre||'—'}</div><div class="st">${s.texto}</div>${s.kcal?`<div class="sk">${s.kcal}</div>`:''}</div>`; });
+          h+='</div></div>';
+        } else {
+          h+=`<div class="mr"><div class="mt"><div class="mtime">${c.momento}${c.tiempo?`<div class="tnote">${c.tiempo}</div>`:''}</div><div><div class="mname-r">${c.nombre||''}</div>${c.descripcion?`<div class="mdesc">${c.descripcion}</div>`:''}</div>${c.kcal?`<div class="mkcal">${c.kcal}</div>`:''}</div></div>`;
+        }
+      });
+      h+='</div></div>';
+    });
+    h+='</div>';
+    el.innerHTML=h;
+  } catch(e) { el.innerHTML=`<button class="hback" onclick="renderHistoricoTab()">← Volver</button><p style="color:var(--terracotta)">${e.message}</p>`; }
+}
+
+// ── FAVORITOS TAB ────────────────────────────────────────
+function renderFavsTab() {
+  const el=document.getElementById('tab-favs');
+  if (!FAVS.favoritos.length) {
+    el.innerHTML=`<div class="fav-empty"><span class="fei">☆</span><strong>Aún no hay favoritos</strong><p style="margin-top:.5rem;font-size:13px;color:#aaa">Marca platos con ☆ en el menú de la semana para guardarlos aquí.</p></div>`;
+    return;
+  }
+  const sorted=[...FAVS.favoritos].sort((a,b)=>(b.marcado||'').localeCompare(a.marcado||''));
+  let h='<p class="ssub">Platos que os han gustado — inspiración para semanas futuras.</p><div class="fgrid">';
+  sorted.forEach(f=>{
+    h+=`<div class="fcard"><div><div class="fn">${f.nombre}</div><div class="fm">${f.momento}${f.semana_iso?` · ${f.semana_iso}`:''}</div>${f.descripcion?`<div class="fd">${f.descripcion}</div>`:''}<div class="fs-date">Marcado el ${f.marcado||'—'}</div></div>
+      <button class="funfav" onclick="removeFav('${f.id}')" title="Quitar de favoritos">✕</button></div>`;
+  });
+  h+='</div>';
+  el.innerHTML=h;
+}
+
+// ── FAVORITOS — LÓGICA ───────────────────────────────────
+async function toggleFav(di,ci) {
+  if (!hasToken()) { openSetup(); return; }
+  const comida=MENU.dias[di].comidas[ci];
+  const id=`${MENU.meta?.semana_iso||'cur'}-d${di}-c${ci}`;
+  const idx=FAVS.favoritos.findIndex(f=>f.id===id);
+  if (idx>-1) { FAVS.favoritos.splice(idx,1); }
+  else { FAVS.favoritos.push({ id, nombre:comida.nombre, momento:comida.momento, semana_iso:MENU.meta?.semana_iso||'', descripcion:comida.descripcion||'', marcado:new Date().toISOString().split('T')[0] }); }
+  try {
+    await GH.putFile('menu/favoritos.json', FAVS, `⭐ ${comida.nombre}`);
+    renderMenuTab(MENU); renderFavsTab();
+    toast(idx>-1?'☆ Eliminado de favoritos':'⭐ Añadido a favoritos');
+  } catch(e) { toast(`❌ ${e.message}`,'err'); }
+}
+async function removeFav(id) {
+  if (!hasToken()) { openSetup(); return; }
+  FAVS.favoritos=FAVS.favoritos.filter(f=>f.id!==id);
+  try { await GH.putFile('menu/favoritos.json',FAVS,'⭐ Quitar favorito'); renderFavsTab(); renderMenuTab(MENU); toast('☆ Eliminado'); }
+  catch(e) { toast(`❌ ${e.message}`,'err'); }
+}
+
+// ── EDIT MODE ────────────────────────────────────────────
+function openEdit(di) {
+  if (!hasToken()) { openSetup(); return; }
+  EDIT_IDX=di;
+  const dia=MENU.dias[di];
+  document.getElementById('edit-title').textContent=`Editar — ${dia.nombre}`;
+  let h=`
+    <label class="flabel">Resumen del día</label>
+    <input class="finput" id="e-resumen" value="${x(dia.resumen||'')}">
+    <label class="flabel">Badge</label>
+    <input class="finput" id="e-badge" value="${x(dia.badge||'')}">`;
+  if (dia.nota_especial!==undefined) h+=`<label class="flabel">Nota especial</label><textarea class="ftextarea" id="e-nota">${x(dia.nota_especial||'')}</textarea>`;
+  (dia.comidas||[]).forEach((c,ci)=>{
+    if (c.snacks_personalizados) return;
+    h+=`<div class="meal-edit-block"><h4>${c.momento}</h4>
+      <label class="flabel">Nombre</label><input class="finput" id="e-c${ci}-n" value="${x(c.nombre||'')}">
+      <label class="flabel">Descripción</label><textarea class="ftextarea" id="e-c${ci}-d">${x(c.descripcion||'')}</textarea>
+      <div class="frow">
+        <div><label class="flabel">kcal</label><input class="finput" id="e-c${ci}-k" value="${x(c.kcal||'')}"></div>
+        <div><label class="flabel">Tiempo</label><input class="finput" id="e-c${ci}-t" value="${x(c.tiempo||'')}"></div>
+      </div></div>`;
+  });
+  document.getElementById('edit-body').innerHTML=h;
+  document.getElementById('edit-panel').classList.add('open');
+}
+function closeEdit() { document.getElementById('edit-panel').classList.remove('open'); EDIT_IDX=null; }
+async function saveEdit() {
+  if (EDIT_IDX===null) return;
+  const btn=document.getElementById('edit-save-btn');
+  btn.textContent='Guardando…'; btn.disabled=true;
+  const dia=MENU.dias[EDIT_IDX];
+  dia.resumen=document.getElementById('e-resumen')?.value??dia.resumen;
+  dia.badge=document.getElementById('e-badge')?.value??dia.badge;
+  const notaEl=document.getElementById('e-nota'); if (notaEl) dia.nota_especial=notaEl.value;
+  (dia.comidas||[]).forEach((c,ci)=>{
+    if (c.snacks_personalizados) return;
+    const n=document.getElementById(`e-c${ci}-n`); if (n) c.nombre=n.value;
+    const d=document.getElementById(`e-c${ci}-d`); if (d) c.descripcion=d.value;
+    const k=document.getElementById(`e-c${ci}-k`); if (k) c.kcal=k.value;
+    const t=document.getElementById(`e-c${ci}-t`); if (t) c.tiempo=t.value;
+  });
+  try {
+    await GH.putFile('menu/current.json',MENU,`✏️ Editar ${dia.nombre}`);
+    closeEdit(); renderMenuTab(MENU); toast('✅ Guardado en GitHub');
+  } catch(e) { toast(`❌ ${e.message}`,'err'); }
+  finally { btn.textContent='Guardar en GitHub'; btn.disabled=false; }
+}
+function x(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// ── HELPERS ──────────────────────────────────────────────
+function showTab(id,btn) {
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active'); btn.classList.add('active');
+  if (id==='historico') renderHistoricoTab();
+}
+function td(id) { document.getElementById(id)?.classList.toggle('open'); }
+function ts(el) { el.classList.toggle('done'); el.querySelector('.sc').textContent=el.classList.contains('done')?'✓':''; }
+
+init();
+</script>
+</body>
+</html>
