@@ -209,6 +209,11 @@ function renderMenuTab(menu, personas) {
       </div>
       <div class="dbody">`;
 
+    if (dia.nota_especial) {
+      html += `<div class="mr" style="background:#FBF4DC;border-left:3px solid #B8962E;padding:.75rem 1.25rem">
+        <div style="font-size:12px;color:#7a5e10">ℹ️ ${dia.nota_especial}</div>
+      </div>`;
+    }
     (dia.comidas || []).forEach(c => {
       if (c.snacks_personalizados) {
         const cols = Array(personas.length).fill('1fr').join(' ');
