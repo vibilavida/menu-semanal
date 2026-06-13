@@ -1,1 +1,12 @@
-{ "favoritos": [] }
+{
+  "favoritos": [
+    {
+      "id": "2025-W25-d0-c0",
+      "nombre": "🏢 Sándwich pavo + queso en pan de centeno",
+      "momento": "Desayuno",
+      "semana_iso": "2025-W25",
+      "descripcion": "Pan centeno del congelador (sacar la noche anterior). 2 lonchas pavo, 1 loncha queso, tomate o pepino. Envolver en papel vegetal y listo para salir.",
+      "marcado": "2026-06-13"
+    }
+  ]
+}
