@@ -1,9 +1,9 @@
 {
   "meta": {
-    "semana": "16–22 junio 2025",
-    "semana_iso": "2025-W25",
-    "titulo": "Semana de oficina",
-    "subtitulo": "con cilantro y plátano a gastar",
+    "semana": "23–29 junio 2025",
+    "semana_iso": "2025-W26",
+    "titulo": "Semana ajetreada",
+    "subtitulo": "batch rico, semana sin estrés",
     "generado": "2025-06-13"
   },
   "personas": [
@@ -27,12 +27,13 @@
     }
   ],
   "tags": [
-    { "texto": "🏢 3 días de oficina · sándwich de pavo incluido", "tipo": "w" },
-    { "texto": "🌿 Gastar: cilantro · plátano", "tipo": "a" },
+    { "texto": "⚡ Semana ajetreada · máx 10 min de cocina al día", "tipo": "w" },
+    { "texto": "🏢 Oficina lun · mar · mié", "tipo": "" },
     { "texto": "💪 Fuerza: mar 7AM · vie 7AM · dom 10AM", "tipo": "" },
+    { "texto": "❄️ Merluza estofada para el congelador", "tipo": "a" },
     { "texto": "Sin frutos secos", "tipo": "" }
   ],
-  "alerta_ingredientes": "Cilantro → dhal del martes noche (gastar en días 1-3 antes de que se ponga mustio). Plátano → snack CrisM el lunes + batido el miércoles. Todo integrado.",
+  "alerta_ingredientes": null,
   "dias": [
     {
       "nombre": "Lunes",
@@ -45,31 +46,31 @@
           "tiempo": "2 min",
           "nombre": "🏢 Sándwich pavo + queso en pan de centeno",
           "tags_comida": ["oficina"],
-          "descripcion": "Pan centeno del congelador (sacar la noche anterior). 2 lonchas pavo, 1 loncha queso, tomate o pepino. Envolver en papel vegetal y listo para salir.",
+          "descripcion": "Pan centeno del congelador (sacar noche anterior). 2 lonchas pavo, 1 queso, tomate o pepino. Envolver y listo para salir.",
           "kcal": "~380 kcal"
         },
         {
           "momento": "Comida",
-          "tiempo": "40 min (batch)",
-          "nombre": "Estofado de pollo y patata",
+          "tiempo": "3 min micro",
+          "nombre": "Pollo del batch + arroz + pisto",
           "tags_comida": ["batch"],
-          "descripcion": "Muslos de pollo, patata en trozos, zanahoria, cebolla, ajo, vino blanco. Vitrocerámica 40 min. Hacer 3 raciones: hoy + martes + domingo.",
-          "kcal": "~550 kcal"
+          "descripcion": "Pollo laminado recalentado 2 min. Arroz del batch. Pisto por encima. Aliñar con un hilo de AOVE.",
+          "kcal": "~540 kcal"
         },
         {
           "momento": "Snack",
           "nombre": null,
           "snacks_personalizados": [
             { "persona": 0, "texto": "Requesón 150g + naranja", "kcal": "~200 kcal · 18g prot" },
-            { "persona": 1, "texto": "Yogur entero + avena + plátano 🌿", "tags_comida": ["gastar"], "kcal": "~350 kcal" }
+            { "persona": 1, "texto": "Yogur entero + avena + miel", "kcal": "~320 kcal" }
           ]
         },
         {
           "momento": "Cena",
           "tiempo": "8 min",
           "nombre": "Tortilla de espinacas + tomate aliñado",
-          "descripcion": "3 huevos, puñado de espinacas salteadas 2 min, tortilla en sartén. Tomate en rodajas con sal, AOVE y orégano al lado.",
-          "kcal": "~350 kcal"
+          "descripcion": "3 huevos, puñado espinacas salteadas 2 min, tortilla en sartén. Tomate en rodajas con sal, AOVE y orégano al lado.",
+          "kcal": "~360 kcal"
         }
       ]
     },
@@ -83,7 +84,7 @@
           "momento": "Pre-entreno",
           "tiempo": "preparar noche anterior",
           "nombre": "Overnight oats — yogur + avena + canela",
-          "descripcion": "Mezclar la noche anterior en un tarro: yogur griego, 50g avena, canela. Listo al levantarse. Sin cocinar, sin pensar.",
+          "descripcion": "Mezclar lunes noche en un tarro: yogur griego, 50g avena, canela. Listo al levantarse. Sin cocinar.",
           "kcal": "~380 kcal"
         },
         {
@@ -91,30 +92,30 @@
           "tiempo": "2 min",
           "nombre": "🏢 Sándwich pavo + queso en pan de centeno",
           "tags_comida": ["oficina"],
-          "descripcion": "Preparar al llegar o antes de salir. Igual que el lunes. En día de entreno, añadir otra loncha de pavo extra para proteína.",
+          "descripcion": "Al llegar a la oficina. En día de entreno añadir una loncha de pavo extra.",
           "kcal": "~400 kcal"
         },
         {
           "momento": "Comida",
           "tiempo": "3 min micro",
-          "nombre": "Dhal de lentejas rojas con cilantro fresco 🌿",
-          "tags_comida": ["batch", "gastar"],
-          "descripcion": "Dhal del batch recalentado 3 min. Arroz del batch al lado. Cilantro fresco picado encima al servir — no al micro. La comida fuerte del día de entreno.",
-          "kcal": "~500 kcal"
+          "nombre": "Dhal con garbanzos + pan de centeno",
+          "tags_comida": ["batch"],
+          "descripcion": "Ración de dhal del batch recalentado 3 min. Pan de centeno tostado para mojar. La comida fuerte del día de entreno — legumbres + carbos para recuperar.",
+          "kcal": "~560 kcal"
         },
         {
           "momento": "Snack",
           "nombre": null,
           "snacks_personalizados": [
-            { "persona": 0, "texto": "Huevo duro + pepino en rodajas", "kcal": "~130 kcal · 10g prot" },
-            { "persona": 1, "texto": "Tostada centeno + AOVE + plátano 🌿", "tags_comida": ["gastar"], "kcal": "~310 kcal" }
+            { "persona": 0, "texto": "Huevo cocido + kiwi", "kcal": "~150 kcal · 10g prot" },
+            { "persona": 1, "texto": "Tostada centeno + AOVE + tomate", "kcal": "~280 kcal" }
           ]
         },
         {
           "momento": "Cena",
-          "tiempo": "8 min",
+          "tiempo": "5 min",
           "nombre": "Huevos revueltos + tostada de masa madre",
-          "descripcion": "3 huevos revueltos con sal y pimienta en sartén. Torta de masa madre tostada. Rápido, ligero, proteico.",
+          "descripcion": "3 huevos revueltos con sal y pimienta. Torta de masa madre tostada. Rápido, ligero, proteico.",
           "kcal": "~360 kcal"
         }
       ]
@@ -130,69 +131,69 @@
           "tiempo": "2 min",
           "nombre": "🏢 Sándwich pavo + queso en pan de centeno",
           "tags_comida": ["oficina"],
-          "descripcion": "Igual que lunes y martes. Pan centeno del congelador, pavo, queso, tomate o pepino.",
+          "descripcion": "Pan centeno del congelador. 2 lonchas pavo, 1 queso, pepino o tomate.",
           "kcal": "~380 kcal"
         },
         {
           "momento": "Comida",
-          "tiempo": "25 min (batch)",
-          "nombre": "Albóndigas en salsa de tomate + arroz",
+          "tiempo": "3 min micro",
+          "nombre": "Pollo del batch + pisto + arroz",
           "tags_comida": ["batch"],
-          "descripcion": "Carne picada mixta, ajo, perejil, pan rallado, huevo. Salsa de tomate con cebolla y laurel. Vitrocerámica 25 min. Hacer 4 raciones: hoy + jueves CrisM + 1 congelar.",
-          "kcal": "~540 kcal"
+          "descripcion": "Segunda ración de pollo laminado. Pisto recalentado por encima. Arroz del batch al lado. Parmesano rallado si apetece.",
+          "kcal": "~520 kcal"
         },
         {
           "momento": "Snack",
           "nombre": null,
           "snacks_personalizados": [
-            { "persona": 0, "texto": "Yogur griego + kiwi", "kcal": "~180 kcal · 14g prot" },
-            { "persona": 1, "texto": "Batido: leche entera + yogur + avena", "kcal": "~320 kcal" }
+            { "persona": 0, "texto": "Yogur griego + kiwi", "kcal": "~170 kcal · 14g prot" },
+            { "persona": 1, "texto": "Tostada + aguacate + sal maldon", "kcal": "~280 kcal" }
           ]
         },
         {
           "momento": "Cena",
-          "tiempo": "10 min",
-          "nombre": "Crema de calabacín y puerro + tostada con queso fresco",
-          "descripcion": "Calabacín + puerro + caldo + quesito, vitrocerámica 10 min y batidora. Servir templada o fría. Tostada de centeno con queso fresco por encima — le da cuerpo a la cena.",
+          "tiempo": "5 min",
+          "nombre": "Huevos al pisto",
+          "tags_comida": ["batch"],
+          "descripcion": "Pisto del batch recalentado en sartén. Hacer hueco y añadir 2-3 huevos, tapar 3 min hasta que cuajen. Pan de centeno al lado. Cena de diez.",
           "kcal": "~380 kcal"
         }
       ]
     },
     {
-      "nombre": "Jueves — solo CrisM",
-      "resumen": "CrisV tiene evento · CrisM ~1.850 kcal",
+      "nombre": "Jueves",
+      "resumen": "~1.850 kcal · descanso",
       "tipo": "descanso",
-      "badge": "EVENTO CRISV",
-      "nota_especial": "CrisV come fuera en un evento — no hay que planificarle nada. Menú del día solo para CrisM.",
+      "badge": "DESCANSO",
       "comidas": [
         {
           "momento": "Desayuno",
           "tiempo": "5 min",
-          "nombre": "Tortas masa madre + aguacate aplastado",
-          "descripcion": "CrisM. Tortas del congelador tostadas. Aguacate con sal, limón y AOVE. Sin prisas.",
+          "nombre": "Tortas de masa madre + aguacate aplastado",
+          "descripcion": "Tortas del congelador tostadas. Aguacate con sal, limón y AOVE. Sin prisas.",
           "kcal": "~370 kcal"
         },
         {
           "momento": "Comida",
-          "tiempo": "3 min micro",
-          "nombre": "Albóndigas del batch + ensalada",
-          "tags_comida": ["batch"],
-          "descripcion": "CrisM. Ración de albóndigas recalentada. Ensalada de bolsa al lado con vinagreta.",
-          "kcal": "~480 kcal"
+          "tiempo": "12 min",
+          "nombre": "Salmón fresco air fryer + arroz + brócoli micro",
+          "descripcion": "150g salmón a 180°C 12 min en air fryer con AOVE y limón. Arroz del batch recalentado. Brócoli en micro 4 min con sal y AOVE. Omega-3 + carbos + verdura.",
+          "kcal": "~560 kcal"
         },
         {
           "momento": "Snack",
           "nombre": null,
           "snacks_personalizados": [
-            { "persona": 1, "texto": "Tostada centeno + queso fresco + tomate cherry", "kcal": "~280 kcal" }
+            { "persona": 0, "texto": "Huevo cocido + pepino en rodajas", "kcal": "~130 kcal · 10g prot" },
+            { "persona": 1, "texto": "Batido: leche entera + yogur + fruta", "kcal": "~320 kcal" }
           ]
         },
         {
           "momento": "Cena",
-          "tiempo": "5 min",
-          "nombre": "Huevos revueltos + tostada de centeno",
-          "descripcion": "CrisM. 2-3 huevos revueltos con sal y pimienta. Tostada centeno. Cena rápida y ligera.",
-          "kcal": "~300 kcal"
+          "tiempo": "3 min",
+          "nombre": "Salmón ahumado + tostadas de centeno + queso fresco + pepino",
+          "descripcion": "Sin cocinar. Tostadas de centeno, queso fresco extendido, salmón ahumado por encima, pepino en rodajas. Limón y pimienta negra. Cena perfecta de verano.",
+          "kcal": "~340 kcal"
         }
       ]
     },
@@ -205,38 +206,38 @@
         {
           "momento": "Pre-entreno",
           "tiempo": "preparar noche anterior",
-          "nombre": "Overnight oats — mismo que el martes",
-          "descripcion": "Preparar el jueves noche. Yogur griego + avena + canela en tarro. Sin excusas el viernes.",
+          "nombre": "Overnight oats — yogur + avena + canela",
+          "descripcion": "Preparar el jueves noche. Mismo que el martes. Sin excusas.",
           "kcal": "~380 kcal"
         },
         {
           "momento": "Desayuno",
           "tiempo": "5 min",
-          "nombre": "Torta masa madre + huevo revuelto",
-          "descripcion": "Post-entreno en casa. 2 huevos revueltos rápidos en sartén + torta tostada. Proteína antes de empezar el día.",
-          "kcal": "~340 kcal"
+          "nombre": "Huevo revuelto + torta de masa madre",
+          "descripcion": "Post-entreno en casa. 2 huevos revueltos rápidos + torta tostada. Proteína antes de empezar el día.",
+          "kcal": "~330 kcal"
         },
         {
           "momento": "Comida",
           "tiempo": "20 min",
           "nombre": "🍝 Pasta con chorizo y tomate",
-          "descripcion": "LA TRADICIÓN. Pasta al dente, chorizo ibérico en rodajas salteado en sartén, tomate triturado, ajo, AOVE. Parmesano al final. La de siempre.",
-          "kcal": "~620 kcal"
+          "descripcion": "LA TRADICIÓN. Pasta al dente, chorizo ibérico en rodajas salteado, tomate triturado, ajo, AOVE. Parmesano al final.",
+          "kcal": "~630 kcal"
         },
         {
           "momento": "Snack",
           "nombre": null,
           "snacks_personalizados": [
-            { "persona": 0, "texto": "Requesón + pera", "kcal": "~200 kcal · 16g prot" },
+            { "persona": 0, "texto": "Requesón + naranja", "kcal": "~200 kcal · 16g prot" },
             { "persona": 1, "texto": "Yogur entero + avena + miel", "kcal": "~290 kcal" }
           ]
         },
         {
           "momento": "Cena",
           "tiempo": "5 min",
-          "nombre": "Ensalada de atún + tomate + pepino",
-          "descripcion": "2 latas de atún al natural, tomate cherry, pepino, vinagreta de mostaza y limón. Sin cocinar, sin legumbres. Ligera después de la pasta del mediodía.",
-          "kcal": "~280 kcal"
+          "nombre": "Huevos revueltos + ensalada de tomate",
+          "descripcion": "3 huevos revueltos. Tomate cherry partido con AOVE, orégano y sal. Ligera después de la pasta del mediodía.",
+          "kcal": "~300 kcal"
         }
       ]
     },
@@ -250,30 +251,30 @@
           "momento": "Desayuno",
           "tiempo": "10 min",
           "nombre": "Pan casero tostado + huevos revueltos + tomate",
-          "descripcion": "El desayuno del finde sin prisas. Pan casero del congelador tostado, 2 huevos revueltos, tomate en rodajas con AOVE.",
+          "descripcion": "El desayuno del finde sin prisas. Pan casero del congelador, 2 huevos revueltos, tomate en rodajas con AOVE.",
           "kcal": "~440 kcal"
         },
         {
           "momento": "Comida",
           "tiempo": "15 min",
           "nombre": "Hamburguesas caseras de ternera + ensalada",
-          "descripcion": "Carne picada ternera, sal, pimienta, ajo en polvo. Vitrocerámica fuego alto. Pan centeno tostado, mostaza, lechuga, tomate. Ensalada verde al lado.",
+          "descripcion": "300g carne picada ternera, sal, pimienta, ajo en polvo. Vitrocerámica fuego alto 4 min por lado. Pan centeno tostado, mostaza, lechuga, tomate. Ensalada verde al lado.",
           "kcal": "~580 kcal"
         },
         {
           "momento": "Snack",
           "nombre": null,
           "snacks_personalizados": [
-            { "persona": 0, "texto": "Yogur griego + kiwi", "kcal": "~170 kcal · 14g prot" },
-            { "persona": 1, "texto": "Tostada + aguacate + sal maldon + AOVE", "kcal": "~280 kcal" }
+            { "persona": 0, "texto": "Yogur griego + fruta", "kcal": "~170 kcal · 14g prot" },
+            { "persona": 1, "texto": "Tostada + aguacate + tomate cherry", "kcal": "~280 kcal" }
           ]
         },
         {
           "momento": "Cena",
-          "tiempo": "12 min",
-          "nombre": "Salmón air fryer + ensalada verde",
-          "descripcion": "150g salmón a 180°C 12 min en air fryer con AOVE y limón. Ensalada de bolsa con vinagreta. Cena ligera y proteica.",
-          "kcal": "~380 kcal"
+          "tiempo": "3 min",
+          "nombre": "Huevos cocidos + queso fresco + ensalada de bolsa",
+          "descripcion": "2 huevos cocidos del batch partidos, queso fresco en dados, ensalada de bolsa, cherry, vinagreta de mostaza. Cena ligera y proteica sin cocinar nada.",
+          "kcal": "~320 kcal"
         }
       ]
     },
@@ -287,38 +288,39 @@
           "momento": "Pre-entreno",
           "tiempo": "2 min",
           "nombre": "Yogur griego + avena + fruta",
-          "descripcion": "Antes de salir a las 9:30. Rápido, sin cocinar.",
+          "descripcion": "Antes de salir. Rápido, sin cocinar.",
           "kcal": "~370 kcal"
         },
         {
           "momento": "Post-entreno",
           "tiempo": "10 min",
           "nombre": "Brunch + arrancar el batch",
-          "descripcion": "Huevos revueltos + tortas de masa madre mientras la olla ya está al fuego. Multitarea del domingo.",
+          "descripcion": "Huevos revueltos + tortas de masa madre mientras la olla del dhal ya está al fuego y el pollo en el air fryer. Multitarea del domingo.",
           "kcal": "~460 kcal"
         },
         {
           "momento": "Comida",
           "tiempo": "3 min micro",
-          "nombre": "Estofado de pollo del batch + arroz",
+          "nombre": "Dhal con garbanzos + arroz",
           "tags_comida": ["batch"],
-          "descripcion": "Última ración del estofado. Recalentar micro. El batch pagando dividendos hasta el final.",
+          "descripcion": "Primera ración del dhal recién hecho. Con arroz del batch. La mejor manera de probar si está bien de sal y especias.",
           "kcal": "~520 kcal"
         },
         {
           "momento": "Snack",
           "nombre": null,
           "snacks_personalizados": [
-            { "persona": 0, "texto": "Huevo duro + naranja", "kcal": "~190 kcal · 12g prot" },
+            { "persona": 0, "texto": "Huevo cocido + naranja", "kcal": "~180 kcal · 10g prot" },
             { "persona": 1, "texto": "Batido: leche entera + yogur + avena", "kcal": "~320 kcal" }
           ]
         },
         {
           "momento": "Cena",
           "tiempo": "5 min",
-          "nombre": "Tortilla de patata mini + pepino",
-          "descripcion": "2 huevos + patata cocida del batch aplastada en sartén. Pepino en rodajas al lado. Cena ligera para cerrar la semana.",
-          "kcal": "~320 kcal"
+          "nombre": "Huevos al pisto",
+          "tags_comida": ["batch"],
+          "descripcion": "Pisto recién hecho en sartén, 2-3 huevos cuajados encima. Pan de centeno. Cena de domingo sin esfuerzo.",
+          "kcal": "~360 kcal"
         }
       ]
     }
@@ -326,149 +328,163 @@
   "batch": [
     {
       "emoji": "🍗",
-      "nombre": "Estofado de pollo y patata",
-      "tiempo": "40 min · vitrocerámica",
-      "descripcion": "600g muslos de pollo, 4 patatas medianas en cubos, 2 zanahorias, 1 cebolla, 3 dientes ajo, vino blanco, caldo, pimentón dulce, laurel. Sofrito de cebolla y ajo 5 min, añadir pollo dorado 5 min, el resto todo junto 30 min a fuego medio.",
-      "uso": "Lunes cena (batch) · martes comida tupper · domingo cena. 3 raciones."
+      "nombre": "Pollo marinado en air fryer",
+      "tiempo": "20 min · manos libres",
+      "descripcion": "600g pechugas o muslos deshuesados. Marinar con AOVE, pimentón dulce, ajo en polvo, orégano y sal. Air fryer 180°C 20 min, dar la vuelta a los 10 min. Enfriar, laminar en tiras, tupper. Aguanta 4 días en nevera.",
+      "uso": "Lunes comida · miércoles comida · domingo comida."
     },
     {
-      "emoji": "🍛",
-      "nombre": "Dhal de lentejas rojas + cilantro",
-      "tiempo": "20 min · vitrocerámica",
-      "descripcion": "300g lentejas rojas, 1 cebolla, 2 dientes ajo, tomate triturado, comino, cúrcuma, jengibre, leche de coco (opcional). El cilantro NO va al batch — se añade fresco al servir el martes noche.",
-      "uso": "Martes cena. 2 raciones (congela la segunda si sobra)."
-    },
-    {
-      "emoji": "🍝",
-      "nombre": "Albóndigas en salsa de tomate",
+      "emoji": "🫘",
+      "nombre": "Dhal con garbanzos y verduras",
       "tiempo": "25 min · vitrocerámica",
-      "descripcion": "400g carne picada mixta (ternera + cerdo), 1 huevo, pan rallado, ajo, perejil, sal. Formar bolas, dorar en sartén 5 min. Salsa: tomate triturado + cebolla + laurel + orégano, 15 min. Juntar y reducir 5 min más.",
-      "uso": "Miércoles cena · jueves comida CrisM. Congelar 1 ración en bolsa zip."
+      "descripcion": "Sofrito de cebolla + ajo + zanahoria 5 min. Añadir 250g lentejas rojas, 1 bote garbanzos escurridos, tomate triturado, cúrcuma, comino, jengibre, leche de coco (opcional) y 500ml agua. Cocer 20 min hasta que las lentejas se deshagan. Ajustar sal.",
+      "uso": "Martes comida · jueves comida (si queda) · domingo comida."
+    },
+    {
+      "emoji": "🍅",
+      "nombre": "Pisto",
+      "tiempo": "25 min · vitrocerámica",
+      "descripcion": "Cebolla + pimiento rojo + pimiento verde en dados, sofreír 8 min. Añadir calabacín + berenjena en dados, 10 min más. Tomate triturado, sal, azúcar pizca, orégano. 10 min a fuego medio. Hacer cantidad generosa.",
+      "uso": "Lunes comida · miércoles comida · miércoles cena (huevos al pisto) · domingo cena."
+    },
+    {
+      "emoji": "🐟",
+      "nombre": "Merluza estofada con espinacas y garbanzos",
+      "tiempo": "20 min · vitrocerámica",
+      "descripcion": "Sofrito de cebolla + ajo + tomate triturado 8 min. Añadir 1 bote garbanzos escurridos + caldo de pescado. Incorporar 400g lomos de merluza y espinacas, cocer 8 min. Ajustar sal y perejil fresco.",
+      "uso": "❄️ Congelar en raciones para semanas futuras. Descongelar en nevera noche anterior."
+    },
+    {
+      "emoji": "🥚",
+      "nombre": "Huevos cocidos (6 uds)",
+      "tiempo": "10 min",
+      "descripcion": "Agua fría, ebullición, exactamente 10 min, agua fría inmediata. Guardar sin pelar hasta 7 días en nevera.",
+      "uso": "Snacks CrisV toda la semana · cena sábado · post-entreno."
     },
     {
       "emoji": "🍚",
       "nombre": "Arroz blanco",
       "tiempo": "18 min · vitrocerámica",
-      "descripcion": "300g arroz. Hervidor para el agua, arroz en olla con agua hirviendo + sal. 18 min fuego medio-bajo. Escurrir, extender en bandeja para que enfríe suelto. Tupper en nevera.",
-      "uso": "Martes cena (con dhal) · jueves comida CrisM (con albóndigas). Aguanta 4 días."
-    },
-    {
-      "emoji": "🥚",
-      "nombre": "Huevos duros (6 uds)",
-      "tiempo": "10 min",
-      "descripcion": "Agua fría, llevar a ebullición, exactamente 10 min, agua fría inmediatamente para parar la cocción. Guardar sin pelar en nevera hasta 7 días.",
-      "uso": "Post-entreno martes · snack CrisV lunes + miércoles + viernes. 6g prot por huevo, cero cocina entre semana."
+      "descripcion": "300g arroz. Hervidor para el agua, olla con agua hirviendo + sal, 18 min fuego medio. Escurrir y extender para que enfríe suelto.",
+      "uso": "Lunes comida · miércoles comida · jueves comida (con salmón) · domingo comida."
     }
   ],
-  "orden_batch": "1. Hervidor al agua → arranca el arroz en olla (18 min sin atención).\n2. Mientras: cuece los 6 huevos duros (10 min).\n3. Empieza el estofado de pollo en la olla grande (40 min, solo vigilar).\n4. Mientras el estofado: prepara el dhal de lentejas (20 min activo).\n5. Cuando el dhal esté listo: forma y cocina las albóndigas (25 min).\n6. Enfriar todo, tuppers etiquetados con el día, congela 1 ración albóndigas.\nTotal tiempo activo real: ~45 min. El resto es esperar y escuchar música.",
+  "orden_batch": "1. Air fryer ON con el pollo (20 min, no tocar).\n2. Mientras: arran ca el arroz en olla (18 min).\n3. Mientras: sofríe base del dhal (5 min), añade lentejas + garbanzos + agua (20 min sin tocar).\n4. Mientras dhal y arroz: cuece los huevos duros (10 min).\n5. Cuando salga el pollo: empieza el pisto en la sartén (25 min).\n6. Mientras el pisto: cocina la merluza estofada (20 min).\n7. Todo listo: tuppers, etiquetas, congela la merluza en raciones planas.\nTiempo activo real: ~40 min. El resto es esperar.",
   "compra": {
-    "ya_tienes": "Cilantro fresco · Plátano · Tortas de masa madre (congelador) · Pan casero (congelador) · AOVE · Especias básicas",
+    "ya_tienes": "Tortas de masa madre (congelador) · Pan casero (congelador) · Avena · AOVE · Pimentón dulce · Ajo · Orégano · Cúrcuma · Comino · Jengibre · Mostaza",
     "categorias": [
       {
         "nombre": "🥩 Proteínas",
         "items": [
-          { "texto": "Muslos de pollo", "cantidad": "600g — Mercadona" },
-          { "texto": "Carne picada mixta (ternera + cerdo)", "cantidad": "400g — Mercadona" },
-          { "texto": "Carne picada ternera (hamburguesas)", "cantidad": "300g — Mercadona" },
-          { "texto": "Salmón fresco o congelado", "cantidad": "300g — Mercadona o Carrefour" },
-          { "texto": "Pavo en lonchas", "cantidad": "200g — Mercadona" },
-          { "texto": "Atún al natural en lata", "cantidad": "3 latas" },
-          { "texto": "Chorizo ibérico (pasta viernes)", "cantidad": "1 pieza pequeña — Mercadona" },
+          { "texto": "Pollo (pechugas o muslos deshuesados)", "cantidad": "600g" },
+          { "texto": "Merluza (lomos frescos o congelados)", "cantidad": "400g" },
+          { "texto": "Salmón fresco", "cantidad": "300g (2 raciones)" },
+          { "texto": "Salmón ahumado", "cantidad": "1 paquete" },
+          { "texto": "Carne picada de ternera", "cantidad": "300g — hamburguesas" },
+          { "texto": "Pavo en lonchas", "cantidad": "200g — sándwiches" },
+          { "texto": "Chorizo ibérico", "cantidad": "1 pieza pequeña — pasta viernes" },
           { "texto": "Huevos", "cantidad": "12 uds" }
         ]
       },
       {
-        "nombre": "🫘 Legumbres y cereales",
+        "nombre": "🫘 Legumbres",
         "items": [
-          { "texto": "Lentejas rojas (dhal)", "cantidad": "300g — Carrefour o Mercadona" },
-          { "texto": "Garbanzos en bote", "cantidad": "1 bote" },
+          { "texto": "Lentejas rojas", "cantidad": "250g — dhal" },
+          { "texto": "Garbanzos en bote", "cantidad": "2 botes (1 dhal · 1 merluza)" }
+        ]
+      },
+      {
+        "nombre": "🍝 Cereales y pan",
+        "items": [
           { "texto": "Arroz", "cantidad": "500g (si no tienes)" },
-          { "texto": "Pasta (spaghetti o penne)", "cantidad": "500g (si no tienes)" },
-          { "texto": "Pan de centeno", "cantidad": "1 paquete — Mercadona (congelar)" },
-          { "texto": "Pan rallado (albóndigas)", "cantidad": "50g" }
+          { "texto": "Pasta", "cantidad": "500g (si no tienes)" },
+          { "texto": "Pan de centeno", "cantidad": "1 paquete — congelar al llegar" }
         ]
       },
       {
         "nombre": "🥛 Lácteos",
         "items": [
-          { "texto": "Yogur griego natural", "cantidad": "6 uds — Mercadona" },
+          { "texto": "Yogur griego natural", "cantidad": "6 uds" },
           { "texto": "Yogur entero (CrisM)", "cantidad": "4 uds" },
-          { "texto": "Requesón", "cantidad": "200g — Mercadona" },
-          { "texto": "Queso en lonchas (sándwich)", "cantidad": "1 paquete" },
-          { "texto": "Queso fresco", "cantidad": "1 ud — para jueves CrisM" },
-          { "texto": "Quesito o queso crema (crema calabacín)", "cantidad": "2 uds" },
+          { "texto": "Requesón", "cantidad": "200g" },
+          { "texto": "Queso en lonchas (sándwiches)", "cantidad": "1 paquete" },
+          { "texto": "Queso fresco", "cantidad": "1 ud" },
           { "texto": "Leche entera (CrisM)", "cantidad": "1L" },
-          { "texto": "Parmesano rallado (pasta)", "cantidad": "50g" }
+          { "texto": "Leche de coco (dhal, opcional)", "cantidad": "1 latita" }
         ]
       },
       {
         "nombre": "🥦 Verduras",
         "items": [
-          { "texto": "Patata", "cantidad": "1 kg — estofado" },
-          { "texto": "Zanahoria", "cantidad": "4 uds" },
-          { "texto": "Cebolla", "cantidad": "4 uds" },
-          { "texto": "Ajo", "cantidad": "1 cabeza" },
-          { "texto": "Calabacín", "cantidad": "2 uds — crema jueves CrisM" },
-          { "texto": "Puerro", "cantidad": "1 ud — crema" },
+          { "texto": "Cebolla", "cantidad": "4 uds (batch)" },
+          { "texto": "Zanahoria", "cantidad": "3 uds (dhal + snack)" },
+          { "texto": "Calabacín", "cantidad": "2 uds (pisto)" },
+          { "texto": "Berenjena", "cantidad": "1 ud (pisto)" },
+          { "texto": "Pimiento rojo", "cantidad": "1 ud (pisto)" },
+          { "texto": "Pimiento verde", "cantidad": "1 ud (pisto)" },
+          { "texto": "Espinacas bolsa", "cantidad": "300g (merluza + cenas)" },
+          { "texto": "Brócoli", "cantidad": "1 ud (jueves con salmón)" },
+          { "texto": "Tomate triturado en bote", "cantidad": "2 botes (pisto + merluza)" },
           { "texto": "Tomate cherry", "cantidad": "250g" },
-          { "texto": "Tomate triturado en bote", "cantidad": "2 botes" },
           { "texto": "Pepino", "cantidad": "2 uds" },
-          { "texto": "Aguacate", "cantidad": "2 uds (comprar el jueves si es para el miércoles)" },
-          { "texto": "Espinacas bolsa", "cantidad": "300g — salmón sábado" },
-          { "texto": "Ensalada lavada bolsa", "cantidad": "1 bolsa" }
+          { "texto": "Ensalada lavada bolsa", "cantidad": "2 bolsas" },
+          { "texto": "Aguacate", "cantidad": "2 uds" }
         ]
       },
       {
         "nombre": "🍊 Fruta",
         "items": [
-          { "texto": "Naranja", "cantidad": "4 uds — snacks CrisV" },
+          { "texto": "Naranja", "cantidad": "4 uds" },
           { "texto": "Kiwi", "cantidad": "4 uds" },
-          { "texto": "Pera", "cantidad": "3 uds" }
+          { "texto": "Fruta para avena (plátano o manzana)", "cantidad": "4 uds" }
         ]
       },
       {
         "nombre": "🫙 Despensa (si no tienes)",
         "items": [
-          { "texto": "Vino blanco para cocinar", "cantidad": "pequeño brik — Mercadona" },
-          { "texto": "Leche de coco (dhal, opcional)", "cantidad": "1 lata" },
-          { "texto": "Cúrcuma + comino + jengibre", "cantidad": "especias para el dhal" },
-          { "texto": "Laurel", "cantidad": "" },
-          { "texto": "Mostaza de Dijon", "cantidad": "" }
+          { "texto": "Caldo de pescado (pastilla o brick pequeño)", "cantidad": "merluza" },
+          { "texto": "Parmesano rallado", "cantidad": "pequeño — pasta" },
+          { "texto": "Azúcar (pizca para el pisto)", "cantidad": "" }
         ]
       }
     ],
-    "orden_consumo": "Días 1-3 (lun-mié): aguacate, espinacas, tomate cherry, cilantro y plátano (gastar).\nDías 4-5 (jue-vie): calabacín, puerro, pepino, garbanzos.\nDías 6-7 (sáb-dom): salmón, hamburguesas, ensalada.\nPatata, zanahoria, naranja, kiwi y pera aguantan toda la semana."
+    "orden_consumo": "Días 1-3 (lun-mié): aguacate, espinacas, pimiento, berenjena.\nDías 4-5 (jue-vie): brócoli, pepino, salmón fresco.\nDías 6-7 (sáb-dom): ternera, ensalada bolsa, tomate cherry.\nZanahoria, naranja, kiwi y fruta aguantan toda la semana."
   },
   "nutricion": [
     {
-      "emoji": "💪",
-      "titulo": "CrisV — 3 días de fuerza, overnight oats obligatorios",
-      "texto": "Con entreno a las 7AM el martes y viernes, preparar los overnight oats la noche anterior es innegociable — 2 minutos de trabajo, cero estrés matutino. Post-entreno: plátano + huevo duro antes de ducharte (martes) o huevo revuelto rápido (viernes).\n\nEl jueves CrisV come fuera: sin planificación, sin culpa.\n\n<ul><li>≥135g proteína/día para síntesis muscular continua</li><li>Requesón o yogur griego de noche cuando puedas (proteína lenta)</li><li>Déficit suave solo en descanso — no recortes en días de entreno</li></ul>"
+      "emoji": "⚡",
+      "titulo": "Semana ajetreada — calidad sin esfuerzo",
+      "texto": "Toda la cocina real va al domingo en ~40 min activos. Entre semana: micro, tostadora y un sartén 5 min. El batch hace el trabajo por vosotras."
     },
     {
-      "emoji": "🟩",
-      "titulo": "CrisM — superávit suave, snacks más calóricos",
-      "texto": "Mismas comidas principales, snacks más contundentes. Esta semana el batido del miércoles (leche + yogur + plátano) y el yogur del lunes suman fácil las 200 kcal extra.\n\n<ul><li>Porciones de arroz y pan ligeramente mayores en comidas compartidas</li><li>El jueves, dos comidas caseras completas (batch well-used)</li><li>Ganar ritmo sin prisa: 200-300g/semana es el objetivo</li></ul>"
-    },
-    {
-      "emoji": "🌿",
-      "titulo": "Ingredientes a gastar — cilantro y plátano",
-      "texto": "<ul><li><strong>Cilantro</strong> → al dhal del martes, pero <em>en crudo al servir</em>, no al batch. Así conserva el aroma. Es antioxidante y antiinflamatorio.</li><li><strong>Plátano</strong> → snack CrisM el lunes (con yogur) y batido el miércoles. Potasio para la recuperación muscular post-entreno.</li></ul>"
+      "emoji": "🍗",
+      "titulo": "Pollo marinado — versátil y proteico",
+      "texto": "El pollo del air fryer con pimentón y ajo resulta jugoso tanto frío como recalentado. Con arroz y pisto cubre el 60% de los macros de una comida completa. Añadir siempre un chorrito de limón al servir — mejora la absorción del hierro de las espinacas."
     },
     {
       "emoji": "🫘",
-      "titulo": "Legumbres esta semana — 2 veces, bien distribuidas",
-      "texto": "Dhal de lentejas rojas (martes) + garbanzos (viernes cena). Solo 2 de las 3 permitidas — bajo el máximo y separadas por días. Si alguna da gases, es por la cantidad: empezar con ración moderada."
+      "titulo": "Dhal con garbanzos — legumbre única esta semana",
+      "texto": "Solo 1 vez para respetar el calor y los gases. El dhal combina lentejas rojas (hierro, proteína vegetal) con garbanzos (fibra, proteína) y verduras. La leche de coco opcional suaviza y añade grasas saludables. <ul><li>Martes: comida post-entreno — carbos + proteína ideal para recuperar</li><li>Domingo: primer tupper para probar el punto de sal</li></ul>"
     },
     {
-      "emoji": "❄️",
-      "titulo": "Qué congelar esta semana",
-      "texto": "1 ración de albóndigas en bolsa zip plana (domingo, justo cuando las haces).\nSi el dhal es más del que vais a comer el martes, congela también la segunda ración.\n\n<strong>Descongelación:</strong> siempre a la nevera la noche anterior."
+      "emoji": "🐟",
+      "titulo": "Merluza estofada — inversión para el futuro",
+      "texto": "Esta preparación no entra en el menú semanal — va directa al congelador. En una semana con menos ganas de cocinar o de viaje, es oro. Descongelar en nevera la noche anterior, recalentar 3 min en micro."
     },
     {
-      "emoji": "🏢",
-      "titulo": "3 días de oficina — estrategia sándwich",
-      "texto": "Lunes, martes, miércoles: sándwich de pavo + queso en pan de centeno. Preparar la noche anterior (30 segundos), pan del congelador. Es la opción más rápida, proteica y sin desperdicio para la oficina.\n\nAlternativa martes: llevar tupper con el estofado de pollo del lunes — más calórico para día de entreno."
+      "emoji": "🐟",
+      "titulo": "Salmón doble — fresco y ahumado",
+      "texto": "<ul><li><strong>Jueves comida</strong>: salmón fresco en air fryer — omega-3 antiinflamatorio, ideal a mitad de semana</li><li><strong>Jueves cena</strong>: salmón ahumado frío — proteína sin cocina, perfecta para cena ligera de verano</li></ul>No poner salmón dos veces el mismo día habitualmente, pero jueves funciona bien porque las formas de preparación son muy distintas."
+    },
+    {
+      "emoji": "💪",
+      "titulo": "CrisV — overnight oats los días de entreno",
+      "texto": "Martes y viernes entreno a las 7AM. Preparar el tarro la noche anterior: 2 minutos, cero decisiones por la mañana. ≥135g proteína diaria — los huevos cocidos de snack y el requesón nocturno ayudan a llegar."
+    },
+    {
+      "emoji": "🟩",
+      "titulo": "CrisM — snacks calóricos para el superávit",
+      "texto": "Batidos de leche entera + yogur + fruta, tostadas con aguacate, yogur con avena. Esta semana el pisto también suma calorías de calidad — no escatimar en AOVE al servir."
     }
   ]
 }
