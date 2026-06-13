@@ -142,7 +142,7 @@ main{padding:1.5rem 2rem 4rem;max-width:900px;margin:0 auto;}
 
 <script>
 async function init() {
-  const r = await fetch('menu.json?t=' + Date.now());
+  const r = await fetch('menu/current.json?t=' + Date.now());
   const menu = await r.json();
   const personas = menu.personas || [];
 
