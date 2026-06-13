@@ -10,49 +10,10 @@
   --cream:#F7F3EE;--ink:#1C1A18;--sage:#5C7A5E;--sage-light:#E8EEEA;
   --terracotta:#C4674A;--terra-light:#FAE8E2;--gold:#B8962E;--gold-light:#FBF4DC;
   --mist:#8FA3A8;--mist-light:#EDF2F3;--border:#DDD8D1;
-  --p0:#4A7FA5;--p0-light:#E8F2FA;
-  --p1:#5A9E6F;--p1-light:#E6F4EC;
-  --p2:#9B6BB5;--p2-light:#F0E8FA;
-  --p3:#C4674A;--p3-light:#FAE8E2;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.6;}
 
-/* ── WIZARD ─────────────────────────────────────────── */
-#wizard{position:fixed;inset:0;background:rgba(28,26,24,.7);backdrop-filter:blur(4px);z-index:999;display:flex;align-items:center;justify-content:center;padding:1rem;}
-.wiz-box{background:white;border-radius:18px;padding:2rem;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;}
-.wiz-step{display:none;}.wiz-step.active{display:block;}
-.wiz-title{font-family:'DM Serif Display',serif;font-size:1.5rem;margin-bottom:.3rem;}
-.wiz-sub{color:#888;font-size:13px;margin-bottom:1.5rem;}
-.wiz-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);margin-bottom:.4rem;margin-top:1rem;display:block;}
-.wiz-input{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:.55rem .75rem;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;}
-.wiz-input:focus{border-color:var(--sage);}
-.wiz-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
-.wiz-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;}
-.wiz-color-grid{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.25rem;}
-.wiz-color{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:border-color .15s;}
-.wiz-color.sel{border-color:var(--ink);}
-.persona-block{border:1.5px solid var(--border);border-radius:12px;padding:1rem;margin-bottom:.75rem;position:relative;}
-.persona-block h4{font-size:13px;font-weight:600;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem;}
-.persona-dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
-.remove-persona{position:absolute;top:.75rem;right:.75rem;background:none;border:none;cursor:pointer;color:#ccc;font-size:16px;line-height:1;}
-.remove-persona:hover{color:var(--terracotta);}
-.add-persona{width:100%;border:1.5px dashed var(--border);border-radius:10px;padding:.65rem;font-size:13px;font-weight:500;color:#aaa;cursor:pointer;background:none;margin-bottom:1rem;transition:all .15s;}
-.add-persona:hover{border-color:var(--sage);color:var(--sage);}
-.dias-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.35rem;margin-top:.3rem;}
-.dia-btn{border:1.5px solid var(--border);border-radius:6px;padding:.3rem .1rem;font-size:11px;font-weight:600;cursor:pointer;text-align:center;background:white;transition:all .15s;color:#888;}
-.dia-btn.sel{background:var(--sage);border-color:var(--sage);color:white;}
-.wiz-nav{display:flex;gap:.6rem;margin-top:1.5rem;}
-.btn-primary{flex:1;background:var(--sage);color:white;border:none;border-radius:8px;padding:.65rem 1rem;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;}
-.btn-primary:hover{background:#4d6a50;}
-.btn-sec{flex:1;background:var(--cream);color:var(--ink);border:1.5px solid var(--border);border-radius:8px;padding:.65rem 1rem;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;}
-.btn-sec:hover{background:#ede9e4;}
-.wiz-dots{display:flex;gap:.4rem;justify-content:center;margin-bottom:1.25rem;}
-.wiz-dot{width:6px;height:6px;border-radius:50%;background:var(--border);}
-.wiz-dot.active{background:var(--sage);}
-
-/* ── MAIN SITE ───────────────────────────────────────── */
-#app{display:none;}
 header{background:var(--ink);color:var(--cream);padding:2.5rem 2rem 2rem;position:relative;overflow:hidden;}
 header::after{content:'';position:absolute;bottom:0;right:0;width:280px;height:280px;background:radial-gradient(circle,rgba(92,122,94,.3) 0%,transparent 70%);pointer-events:none;}
 .hlabel{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:.5rem;}
@@ -62,25 +23,31 @@ header h1 em{font-style:italic;color:#9EC7A2;}
 .pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:.2rem .65rem;font-size:11px;font-weight:500;color:#D4D0C8;}
 .pill-a{background:rgba(184,150,46,.2);border-color:rgba(184,150,46,.4);color:#F0D98A;}
 .pill-w{background:rgba(196,103,74,.2);border-color:rgba(196,103,74,.4);color:#F4A98A;}
-.settings-btn{position:absolute;top:1.25rem;right:1.25rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.4rem .65rem;font-size:12px;color:#D4D0C8;cursor:pointer;z-index:10;}
-.settings-btn:hover{background:rgba(255,255,255,.2);}
+
 .mstrip{background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:1rem 2rem;display:flex;flex-wrap:wrap;gap:.75rem 2rem;}
 .mblock .mname{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#666;}
 .mvals{display:flex;gap:1rem;margin-top:.15rem;}
-.mv{font-size:13px;font-weight:600;}.mvl{font-size:10px;color:#888;font-weight:400;margin-left:2px;}
+.mv{font-size:13px;font-weight:600;}
+.mvl{font-size:10px;color:#888;font-weight:400;margin-left:2px;}
+
 nav{background:white;border-bottom:1px solid var(--border);padding:0 2rem;display:flex;overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:100;}
 nav::-webkit-scrollbar{display:none;}
 .tab{padding:.875rem 1rem;font-size:13px;font-weight:500;color:#888;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s;background:none;border-top:none;border-left:none;border-right:none;}
-.tab:hover{color:var(--ink);}.tab.active{color:var(--sage);border-bottom-color:var(--sage);}
+.tab:hover{color:var(--ink);}
+.tab.active{color:var(--sage);border-bottom-color:var(--sage);}
+
 main{padding:1.5rem 2rem 4rem;max-width:900px;margin:0 auto;}
 .section{display:none;}.section.active{display:block;}
 .ssub{color:#777;font-size:13px;margin-bottom:1.5rem;}
+
 .abox{background:var(--gold-light);border:1px solid #e8d07a;border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:13px;color:#7a5e10;}
 .abox strong{display:block;margin-bottom:.25rem;}
+
 .dgrid{display:grid;gap:.85rem;}
 .dc{background:white;border-radius:12px;border:1px solid var(--border);overflow:hidden;}
 .dh{padding:.8rem 1.25rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;}
-.dn{font-weight:600;font-size:14px;}.dm{font-size:11px;color:#aaa;margin-top:1px;}
+.dn{font-weight:600;font-size:14px;}
+.dm{font-size:11px;color:#aaa;margin-top:1px;}
 .dr{display:flex;align-items:center;gap:.6rem;}
 .db{font-size:11px;font-weight:600;padding:.18rem .55rem;border-radius:999px;letter-spacing:.04em;}
 .bf{background:var(--terra-light);color:var(--terracotta);}
@@ -89,21 +56,26 @@ main{padding:1.5rem 2rem 4rem;max-width:900px;margin:0 auto;}
 .dc.open .dchev{transform:rotate(180deg);}
 .dbody{display:none;border-top:1px solid #F0EDE8;}
 .dc.open .dbody{display:block;}
+
 .mr{padding:.8rem 1.25rem;border-bottom:1px solid #F5F3F0;}
 .mr:last-child{border-bottom:none;}
 .mt{display:grid;grid-template-columns:88px 1fr auto;gap:.5rem;align-items:start;}
 .mtime{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#bbb;padding-top:2px;}
 .tnote{font-size:11px;color:var(--terracotta);font-weight:500;text-transform:none;letter-spacing:0;}
-.mname-r{font-weight:500;font-size:13.5px;}.mdesc{font-size:12px;color:#888;margin-top:2px;}
+.mname-r{font-weight:500;font-size:13.5px;}
+.mdesc{font-size:12px;color:#888;margin-top:2px;}
 .mkcal{font-size:12px;font-weight:600;color:var(--sage);white-space:nowrap;}
 .tag{display:inline-block;font-size:10px;border-radius:4px;padding:.1rem .35rem;margin-left:.3rem;vertical-align:middle;}
 .tf{background:var(--mist-light);color:var(--mist);}
 .tb{background:var(--gold-light);color:var(--gold);}
 .tg{background:#FFF0E0;color:#C07020;}
+
 .ss{margin-top:.55rem;display:grid;gap:.5rem;}
 .sp{border-radius:8px;padding:.5rem .65rem;font-size:12px;}
 .sl{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.2rem;}
-.st{color:#444;line-height:1.4;}.sk{font-size:10px;color:#999;margin-top:.15rem;}
+.st{color:#444;line-height:1.4;}
+.sk{font-size:10px;color:#999;margin-top:.15rem;}
+
 .bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.85rem;margin-bottom:1.5rem;}
 .bc{background:white;border-radius:12px;border:1px solid var(--border);padding:1rem;}
 .bi{font-size:1.3rem;margin-bottom:.4rem;}
@@ -114,6 +86,7 @@ main{padding:1.5rem 2rem 4rem;max-width:900px;margin:0 auto;}
 .obox{background:var(--sage-light);border-radius:12px;padding:1.1rem 1.25rem;margin-top:.5rem;}
 .ot{font-weight:600;font-size:13px;color:var(--sage);margin-bottom:.5rem;}
 .ob{font-size:13px;color:#444;line-height:1.9;white-space:pre-line;}
+
 .albox{background:var(--gold-light);border:1px solid #e8d07a;border-radius:10px;padding:.9rem 1.1rem;margin-bottom:1.25rem;font-size:13px;color:#7a5e10;}
 .albox strong{display:block;margin-bottom:.3rem;}
 .scat{font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);margin:1.25rem 0 .5rem;padding-bottom:.35rem;border-bottom:1px solid var(--border);}
@@ -125,334 +98,103 @@ main{padding:1.5rem 2rem 4rem;max-width:900px;margin:0 auto;}
 .sq{color:#bbb;font-size:11px;}
 .wbox{background:var(--terra-light);border-radius:10px;padding:.9rem 1.1rem;margin-top:1.25rem;font-size:13px;color:#8a3a20;white-space:pre-line;}
 .wbox strong{display:block;margin-bottom:.3rem;}
+
 .nc{background:white;border-radius:12px;border:1px solid var(--border);padding:1.1rem 1.25rem;margin-bottom:.85rem;}
 .nh{display:flex;align-items:center;gap:.55rem;margin-bottom:.5rem;}
-.ni{font-size:1.1rem;}.ntit{font-weight:600;font-size:13.5px;}
+.ni{font-size:1.1rem;}
+.ntit{font-weight:600;font-size:13.5px;}
 .nb{font-size:13px;color:#555;line-height:1.65;}
-.nb ul{padding-left:1.1rem;margin-top:.35rem;}.nb li{margin-bottom:.2rem;}
+.nb ul{padding-left:1.1rem;margin-top:.35rem;}
+.nb li{margin-bottom:.2rem;}
 
 @media(max-width:540px){
-  main{padding:1rem 1rem 3rem;}header{padding:1.5rem 1rem 1.25rem;}
-  .mstrip{padding:.85rem 1rem;}nav{padding:0 .75rem;}
-  .mt{grid-template-columns:72px 1fr;}.mkcal{display:none;}
-  .ss{grid-template-columns:1fr;}
-  .wiz-row,.wiz-row3{grid-template-columns:1fr;}
+  main{padding:1rem 1rem 3rem;}
+  header{padding:1.5rem 1rem 1.25rem;}
+  .mstrip{padding:.85rem 1rem;}
+  nav{padding:0 .75rem;}
+  .mt{grid-template-columns:72px 1fr;}
+  .mkcal{display:none;}
 }
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════════════
-     WIZARD DE CONFIGURACIÓN
-══════════════════════════════════════════════════════ -->
-<div id="wizard">
-  <div class="wiz-box">
-    <div class="wiz-dots" id="wiz-dots"></div>
+<header>
+  <div class="hlabel" id="header-label"></div>
+  <h1 id="header-title"></h1>
+  <div class="htags" id="header-tags"></div>
+</header>
+<div class="mstrip" id="mstrip"></div>
 
-    <!-- PASO 1: Bienvenida + nombre app -->
-    <div class="wiz-step active" id="step-0">
-      <div class="wiz-title">Configura tu menú 🥦</div>
-      <div class="wiz-sub">Solo hay que hacer esto una vez. Puedes cambiarlo después en ⚙️</div>
-      <label class="wiz-label">Nombre del menú (aparece en la cabecera)</label>
-      <input class="wiz-input" id="cfg-title" placeholder="Menú semanal de…" value="Menú semanal">
-      <div class="wiz-nav">
-        <button class="btn-primary" onclick="wizNext()">Siguiente →</button>
-      </div>
-    </div>
+<nav>
+  <button class="tab active" onclick="showTab('menu',this)">📅 Menú</button>
+  <button class="tab" onclick="showTab('batch',this)">🔪 Batch cooking</button>
+  <button class="tab" onclick="showTab('compra',this)">🛒 Lista de compra</button>
+  <button class="tab" onclick="showTab('nutri',this)">💪 Nutrición</button>
+</nav>
 
-    <!-- PASO 2: Personas -->
-    <div class="wiz-step" id="step-1">
-      <div class="wiz-title">¿Quién come aquí? 👥</div>
-      <div class="wiz-sub">Añade una o varias personas. Los snacks y macros se mostrarán diferenciados.</div>
-      <div id="personas-list"></div>
-      <button class="add-persona" onclick="addPersona()">+ Añadir persona</button>
-      <div class="wiz-nav">
-        <button class="btn-sec" onclick="wizPrev()">← Atrás</button>
-        <button class="btn-primary" onclick="wizNext()">Siguiente →</button>
-      </div>
-    </div>
-
-    <!-- PASO 3: Macros por persona -->
-    <div class="wiz-step" id="step-2">
-      <div class="wiz-title">Objetivos nutricionales 💪</div>
-      <div class="wiz-sub">Opcional — si lo dejas en blanco no aparecerá en la cabecera.</div>
-      <div id="macros-list"></div>
-      <div class="wiz-nav">
-        <button class="btn-sec" onclick="wizPrev()">← Atrás</button>
-        <button class="btn-primary" onclick="wizNext()">Siguiente →</button>
-      </div>
-    </div>
-
-    <!-- PASO 4: Listo -->
-    <div class="wiz-step" id="step-3">
-      <div class="wiz-title">¡Todo listo! 🎉</div>
-      <div class="wiz-sub">Tu configuración se guarda en este dispositivo. Puedes editarla cuando quieras desde ⚙️ en la cabecera.</div>
-      <p style="font-size:13px;color:#555;margin-bottom:1rem;">Cada semana, ejecuta <code style="background:#f0ede8;padding:.1rem .35rem;border-radius:4px;">/menu-semanal</code> en Claude Code y cuando apruebes el menú se actualizará aquí automáticamente.</p>
-      <div class="wiz-nav">
-        <button class="btn-sec" onclick="wizPrev()">← Atrás</button>
-        <button class="btn-primary" onclick="saveConfig()">Guardar y entrar →</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════════════
-     APP PRINCIPAL
-══════════════════════════════════════════════════════ -->
-<div id="app">
-  <header>
-    <button class="settings-btn" onclick="openSettings()">⚙️ Configuración</button>
-    <div class="hlabel" id="header-label">Menú semanal personalizado</div>
-    <h1 id="header-title">Cargando…</h1>
-    <div class="htags" id="header-tags"></div>
-  </header>
-  <div class="mstrip" id="mstrip"></div>
-  <nav>
-    <button class="tab active" onclick="showTab('menu',this)">📅 Menú</button>
-    <button class="tab" onclick="showTab('batch',this)">🔪 Batch cooking</button>
-    <button class="tab" onclick="showTab('compra',this)">🛒 Lista de compra</button>
-    <button class="tab" onclick="showTab('nutri',this)">💪 Nutrición</button>
-  </nav>
-  <main>
-    <div id="tab-menu" class="section active"></div>
-    <div id="tab-batch" class="section"></div>
-    <div id="tab-compra" class="section"></div>
-    <div id="tab-nutri" class="section"></div>
-  </main>
-</div>
+<main>
+  <div id="tab-menu" class="section active"></div>
+  <div id="tab-batch" class="section"></div>
+  <div id="tab-compra" class="section"></div>
+  <div id="tab-nutri" class="section"></div>
+</main>
 
 <script>
-// ═══════════════════════════════════════════════════════
-// COLORES DISPONIBLES PARA PERSONAS
-// ═══════════════════════════════════════════════════════
-const COLORS = [
-  { id:'p0', hex:'#4A7FA5', light:'#E8F2FA' },
-  { id:'p1', hex:'#5A9E6F', light:'#E6F4EC' },
-  { id:'p2', hex:'#9B6BB5', light:'#F0E8FA' },
-  { id:'p3', hex:'#C4674A', light:'#FAE8E2' },
-  { id:'p4', hex:'#B8962E', light:'#FBF4DC' },
-  { id:'p5', hex:'#8FA3A8', light:'#EDF2F3' },
-];
+async function init() {
+  const r = await fetch('menu.json?t=' + Date.now());
+  const menu = await r.json();
+  const personas = menu.personas || [];
 
-// ═══════════════════════════════════════════════════════
-// WIZARD
-// ═══════════════════════════════════════════════════════
-let wizStep = 0;
-const WIZ_STEPS = 4;
-let personas = [];
-
-function updateDots() {
-  const dots = document.getElementById('wiz-dots');
-  dots.innerHTML = Array.from({length:WIZ_STEPS}, (_,i) =>
-    `<div class="wiz-dot ${i===wizStep?'active':''}"></div>`).join('');
-}
-
-function wizNext() {
-  if (wizStep === 1) renderMacrosStep();
-  document.getElementById(`step-${wizStep}`).classList.remove('active');
-  wizStep++;
-  document.getElementById(`step-${wizStep}`).classList.add('active');
-  updateDots();
-}
-function wizPrev() {
-  document.getElementById(`step-${wizStep}`).classList.remove('active');
-  wizStep--;
-  document.getElementById(`step-${wizStep}`).classList.add('active');
-  updateDots();
-}
-
-function addPersona(nombre='', colorIdx=null) {
-  const idx = personas.length;
-  const ci = colorIdx !== null ? colorIdx : idx % COLORS.length;
-  personas.push({ nombre: nombre || '', color: ci, kcal_entreno:'', kcal_descanso:'', proteina:'', objetivo:'', dias_entreno:[] });
-  renderPersonasList();
-}
-
-function removePersona(idx) {
-  personas.splice(idx, 1);
-  renderPersonasList();
-}
-
-function renderPersonasList() {
-  const list = document.getElementById('personas-list');
-  const dias = ['L','M','X','J','V','S','D'];
-  list.innerHTML = personas.map((p, i) => `
-    <div class="persona-block" id="pb-${i}">
-      <h4><span class="persona-dot" style="background:${COLORS[p.color].hex}"></span>Persona ${i+1}</h4>
-      ${personas.length > 1 ? `<button class="remove-persona" onclick="removePersona(${i})">✕</button>` : ''}
-      <label class="wiz-label">Nombre</label>
-      <input class="wiz-input" placeholder="Nombre" value="${p.nombre}"
-        oninput="personas[${i}].nombre=this.value">
-      <label class="wiz-label">Color</label>
-      <div class="wiz-color-grid">
-        ${COLORS.map((c,ci) => `
-          <div class="wiz-color ${p.color===ci?'sel':''}" style="background:${c.hex}"
-            onclick="setPersonaColor(${i},${ci})"></div>`).join('')}
-      </div>
-      <label class="wiz-label">Días de entreno</label>
-      <div class="dias-grid">
-        ${dias.map((d,di) => `
-          <div class="dia-btn ${p.dias_entreno.includes(di)?'sel':''}"
-            onclick="toggleDia(${i},${di})">${d}</div>`).join('')}
-      </div>
-    </div>`).join('');
-}
-
-function setPersonaColor(pi, ci) {
-  personas[pi].color = ci;
-  renderPersonasList();
-}
-function toggleDia(pi, di) {
-  const arr = personas[pi].dias_entreno;
-  const idx = arr.indexOf(di);
-  idx > -1 ? arr.splice(idx,1) : arr.push(di);
-  renderPersonasList();
-}
-
-function renderMacrosStep() {
-  const list = document.getElementById('macros-list');
-  list.innerHTML = personas.map((p, i) => `
-    <div class="persona-block">
-      <h4><span class="persona-dot" style="background:${COLORS[p.color].hex}"></span>${p.nombre || 'Persona '+(i+1)}</h4>
-      <label class="wiz-label">Objetivo</label>
-      <input class="wiz-input" placeholder="ej: déficit · mantenimiento · superávit" value="${p.objetivo}"
-        oninput="personas[${i}].objetivo=this.value">
-      <div class="wiz-row" style="margin-top:.5rem">
-        <div>
-          <label class="wiz-label">kcal días entreno</label>
-          <input class="wiz-input" type="number" placeholder="2050" value="${p.kcal_entreno}"
-            oninput="personas[${i}].kcal_entreno=this.value">
-        </div>
-        <div>
-          <label class="wiz-label">kcal días descanso</label>
-          <input class="wiz-input" type="number" placeholder="1850" value="${p.kcal_descanso}"
-            oninput="personas[${i}].kcal_descanso=this.value">
-        </div>
-      </div>
-      <label class="wiz-label">Proteína objetivo (g/día)</label>
-      <input class="wiz-input" type="number" placeholder="ej: 135" value="${p.proteina}"
-        oninput="personas[${i}].proteina=this.value">
-    </div>`).join('');
-}
-
-function saveConfig() {
-  const cfg = {
-    appTitle: document.getElementById('cfg-title').value || 'Menú semanal',
-    personas: personas.map(p => ({...p})),
-    savedAt: new Date().toISOString()
-  };
-  localStorage.setItem('menu_config', JSON.stringify(cfg));
-  document.getElementById('wizard').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
-  loadMenu();
-}
-
-function openSettings() {
-  const cfg = getConfig();
-  if (cfg) {
-    personas = cfg.personas.map(p => ({...p}));
-    document.getElementById('cfg-title').value = cfg.appTitle || '';
-  }
-  wizStep = 0;
-  document.querySelectorAll('.wiz-step').forEach(s => s.classList.remove('active'));
-  document.getElementById('step-0').classList.add('active');
-  updateDots();
-  renderPersonasList();
-  document.getElementById('wizard').style.display = 'flex';
-  document.getElementById('app').style.display = 'none';
-}
-
-function getConfig() {
-  try { return JSON.parse(localStorage.getItem('menu_config')); } catch { return null; }
-}
-
-// ═══════════════════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════════════════
-window.addEventListener('DOMContentLoaded', () => {
-  updateDots();
-  addPersona('', 0);
-  renderPersonasList();
-
-  const cfg = getConfig();
-  if (cfg && cfg.personas && cfg.personas.length) {
-    document.getElementById('wizard').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
-    loadMenu();
-  }
-});
-
-// ═══════════════════════════════════════════════════════
-// CARGA Y RENDER DEL MENÚ
-// ═══════════════════════════════════════════════════════
-async function loadMenu() {
-  let menu;
-  try {
-    const r = await fetch('menu.json?t=' + Date.now());
-    menu = await r.json();
-  } catch {
-    document.getElementById('tab-menu').innerHTML =
-      '<p style="color:#aaa;padding:2rem">No se pudo cargar menu.json</p>';
-    return;
-  }
-  const cfg = getConfig();
-  renderHeader(menu, cfg);
-  renderMstrip(cfg);
-  renderMenuTab(menu, cfg);
+  renderHeader(menu, personas);
+  renderMstrip(personas);
+  renderMenuTab(menu, personas);
   renderBatchTab(menu);
   renderCompraTab(menu);
-  renderNutriTab(menu);
+  renderNutriTab(menu, personas);
 }
 
-function renderHeader(menu, cfg) {
-  const nombres = cfg.personas.map(p => p.nombre).filter(Boolean).join(' & ');
-  document.getElementById('header-label').textContent =
-    `${cfg.appTitle} · ${nombres}`;
-  document.title = cfg.appTitle;
+function renderHeader(menu, personas) {
+  const nombres = personas.map(p => p.nombre).join(' & ');
+  document.getElementById('header-label').textContent = `Menú semanal · ${nombres}`;
+  document.title = `Menú semanal · ${nombres}`;
 
-  const titulo = menu.meta?.titulo || '';
-  const sub = menu.meta?.subtitulo || '';
-  const semana = menu.meta?.semana ? ` · ${menu.meta.semana}` : '';
+  const { titulo = '', subtitulo = '', semana = '' } = menu.meta || {};
   document.getElementById('header-title').innerHTML =
-    `${titulo}<br><em>${sub}</em><span style="font-family:'DM Sans',sans-serif;font-size:.85rem;color:#888;font-style:normal"> ${semana}</span>`;
+    `${titulo}<br><em>${subtitulo}</em>` +
+    (semana ? `<span style="font-family:'DM Sans',sans-serif;font-size:.85rem;color:#888;font-style:normal"> · ${semana}</span>` : '');
 
-  const tagsEl = document.getElementById('header-tags');
-  tagsEl.innerHTML = (menu.tags || []).map(t =>
-    `<span class="pill${t.tipo?` pill-${t.tipo}`:''}">${t.texto}</span>`).join('');
+  document.getElementById('header-tags').innerHTML =
+    (menu.tags || []).map(t =>
+      `<span class="pill${t.tipo ? ` pill-${t.tipo}` : ''}">${t.texto}</span>`
+    ).join('');
 }
 
-function renderMstrip(cfg) {
-  const el = document.getElementById('mstrip');
-  el.innerHTML = cfg.personas.map((p, i) => {
-    const c = COLORS[p.color] || COLORS[0];
-    const nombre = p.nombre || `Persona ${i+1}`;
-    const obj = p.objetivo ? ` · ${p.objetivo}` : '';
-    let vals = '';
-    if (p.kcal_entreno) vals += `<span class="mv" style="color:${c.hex}">${p.kcal_entreno}<span class="mvl">kcal entreno</span></span>`;
-    if (p.kcal_descanso) vals += `<span class="mv" style="color:${c.hex}">${p.kcal_descanso}<span class="mvl">kcal desc.</span></span>`;
-    if (p.proteina) vals += `<span class="mv" style="color:${c.hex}">≥${p.proteina}g<span class="mvl">prot</span></span>`;
+function renderMstrip(personas) {
+  document.getElementById('mstrip').innerHTML = personas.map(p => {
+    const vals = [
+      p.kcal_entreno ? `<span class="mv" style="color:${p.color}">${p.kcal_entreno}<span class="mvl">kcal entreno</span></span>` : '',
+      p.kcal_descanso && p.kcal_descanso !== p.kcal_entreno ? `<span class="mv" style="color:${p.color}">${p.kcal_descanso}<span class="mvl">kcal desc.</span></span>` : '',
+      p.proteina ? `<span class="mv" style="color:${p.color}">≥${p.proteina}g<span class="mvl">prot</span></span>` : '',
+    ].filter(Boolean).join('');
     if (!vals) return '';
     return `<div class="mblock">
-      <div class="mname">${nombre}${obj}</div>
+      <div class="mname">${p.nombre}${p.objetivo ? ` · ${p.objetivo}` : ''}</div>
       <div class="mvals">${vals}</div>
     </div>`;
   }).join('');
 }
 
 function tagHtml(tags) {
-  if (!tags) return '';
-  return tags.map(t => {
-    if (t==='batch') return '<span class="tag tb">⚡batch</span>';
-    if (t==='gastar') return '<span class="tag tg">gastar</span>';
-    if (t==='congelar') return '<span class="tag tf">❄ congela</span>';
-    return '';
-  }).join('');
+  return (tags || []).map(t => ({
+    batch: '<span class="tag tb">⚡batch</span>',
+    gastar: '<span class="tag tg">gastar</span>',
+    congelar: '<span class="tag tf">❄ congela</span>',
+  }[t] || '')).join('');
 }
 
-function renderMenuTab(menu, cfg) {
-  const el = document.getElementById('tab-menu');
-  const sub = 'Batch el domingo, recalentar entre semana.';
-  let html = `<p class="ssub">${sub}</p>`;
+function renderMenuTab(menu, personas) {
+  let html = '<p class="ssub">Batch el domingo, recalentar entre semana.</p>';
   if (menu.alerta_ingredientes) {
     html += `<div class="abox"><strong>🍌 Ingredientes a gastar esta semana</strong>${menu.alerta_ingredientes}</div>`;
   }
@@ -460,29 +202,22 @@ function renderMenuTab(menu, cfg) {
 
   (menu.dias || []).forEach((dia, di) => {
     const esEntreno = dia.tipo === 'entreno';
-    const badgeCls = esEntreno ? 'bf' : 'br';
-    const openCls = di === 0 ? ' open' : '';
-    html += `<div class="dc${openCls}" id="d${di}">
+    html += `<div class="dc${di === 0 ? ' open' : ''}" id="d${di}">
       <div class="dh" onclick="td('d${di}')">
         <div><div class="dn">${dia.nombre}</div><div class="dm">${dia.resumen}</div></div>
-        <div class="dr"><span class="db ${badgeCls}">${dia.badge}</span><span class="dchev">▼</span></div>
+        <div class="dr"><span class="db ${esEntreno ? 'bf' : 'br'}">${dia.badge}</span><span class="dchev">▼</span></div>
       </div>
       <div class="dbody">`;
 
     (dia.comidas || []).forEach(c => {
       if (c.snacks_personalizados) {
-        // Snacks diferenciados
-        const ncols = cfg.personas.length;
-        html += `<div class="mr"><div class="mt">
-          <div class="mtime">Snack</div><div></div></div>
-          <div class="ss" style="grid-template-columns:${Array(ncols).fill('1fr').join(' ')}">`;
+        const cols = Array(personas.length).fill('1fr').join(' ');
+        html += `<div class="mr"><div class="mt"><div class="mtime">Snack</div><div></div></div>
+          <div class="ss" style="grid-template-columns:${cols}">`;
         c.snacks_personalizados.forEach((s, si) => {
-          const pi = s.persona !== undefined ? s.persona : si;
-          const p = cfg.personas[pi] || cfg.personas[0];
-          const col = COLORS[p.color] || COLORS[0];
-          const nombre = p.nombre || `Persona ${pi+1}`;
-          html += `<div class="sp" style="background:${col.light}">
-            <div class="sl" style="color:${col.hex}">${nombre}</div>
+          const p = personas[s.persona !== undefined ? s.persona : si] || personas[0];
+          html += `<div class="sp" style="background:${p.color_light}">
+            <div class="sl" style="color:${p.color}">${p.nombre}</div>
             <div class="st">${s.texto}${tagHtml(s.tags_comida)}</div>
             ${s.kcal ? `<div class="sk">${s.kcal}</div>` : ''}
           </div>`;
@@ -491,8 +226,10 @@ function renderMenuTab(menu, cfg) {
       } else {
         html += `<div class="mr"><div class="mt">
           <div class="mtime">${c.momento}${c.tiempo ? `<div class="tnote">${c.tiempo}</div>` : ''}</div>
-          <div><div class="mname-r">${c.nombre || ''}${tagHtml(c.tags_comida)}</div>
-          ${c.descripcion ? `<div class="mdesc">${c.descripcion}</div>` : ''}</div>
+          <div>
+            <div class="mname-r">${c.nombre || ''}${tagHtml(c.tags_comida)}</div>
+            ${c.descripcion ? `<div class="mdesc">${c.descripcion}</div>` : ''}
+          </div>
           ${c.kcal ? `<div class="mkcal">${c.kcal}</div>` : ''}
         </div></div>`;
       }
@@ -502,11 +239,10 @@ function renderMenuTab(menu, cfg) {
   });
 
   html += '</div>';
-  el.innerHTML = html;
+  document.getElementById('tab-menu').innerHTML = html;
 }
 
 function renderBatchTab(menu) {
-  const el = document.getElementById('tab-batch');
   let html = '<p class="ssub">Prepara el domingo, recalienta entre semana.</p><div class="bgrid">';
   (menu.batch || []).forEach(b => {
     html += `<div class="bc">
@@ -524,13 +260,12 @@ function renderBatchTab(menu) {
       <div class="ob">${menu.orden_batch}</div>
     </div>`;
   }
-  el.innerHTML = html;
+  document.getElementById('tab-batch').innerHTML = html;
 }
 
 function renderCompraTab(menu) {
-  const el = document.getElementById('tab-compra');
   const c = menu.compra;
-  if (!c) { el.innerHTML = '<p class="ssub">Sin datos de compra.</p>'; return; }
+  if (!c) { document.getElementById('tab-compra').innerHTML = '<p class="ssub">Sin datos.</p>'; return; }
   let html = '<p class="ssub">Toca cada ítem para tacharlo.</p>';
   if (c.ya_tienes) {
     html += `<div class="albox"><strong>✅ Ya tienes en casa — no comprar</strong>${c.ya_tienes}</div>`;
@@ -548,54 +283,34 @@ function renderCompraTab(menu) {
   if (c.orden_consumo) {
     html += `<div class="wbox"><strong>🗓 Orden de consumo — cero desperdicio</strong>${c.orden_consumo}</div>`;
   }
-  el.innerHTML = html;
+  document.getElementById('tab-compra').innerHTML = html;
 }
 
-function renderNutriTab(menu) {
-  const el = document.getElementById('tab-nutri');
-  const cfg = getConfig();
+function renderNutriTab(menu, personas) {
   let html = '';
-
-  // Tarjetas por persona
-  cfg.personas.forEach((p, i) => {
-    const col = COLORS[p.color] || COLORS[0];
-    const nombre = p.nombre || `Persona ${i+1}`;
-    const diasNombres = ['lunes','martes','miércoles','jueves','viernes','sábado','domingo'];
-    const entreno = p.dias_entreno && p.dias_entreno.length
-      ? p.dias_entreno.map(d => diasNombres[d]).join(' · ')
-      : '—';
-    const kcalInfo = [
+  personas.forEach(p => {
+    const vals = [
       p.kcal_entreno ? `${p.kcal_entreno} kcal entreno` : '',
-      p.kcal_descanso ? `${p.kcal_descanso} kcal descanso` : '',
+      p.kcal_descanso && p.kcal_descanso !== p.kcal_entreno ? `${p.kcal_descanso} kcal descanso` : '',
       p.proteina ? `≥${p.proteina}g proteína/día` : '',
     ].filter(Boolean).join(' · ');
-
     html += `<div class="nc">
       <div class="nh">
-        <div class="ni" style="background:${col.light};width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem">
-          ${['🟦','🟩','🟪','🟧','🟨','⬜'][i % 6]}
-        </div>
-        <div class="ntit">${nombre}${p.objetivo ? ` — ${p.objetivo}` : ''}</div>
+        <div class="ni" style="width:24px;height:24px;border-radius:50%;background:${p.color_light};border:2px solid ${p.color}"></div>
+        <div class="ntit">${p.nombre}${p.objetivo ? ` — ${p.objetivo}` : ''}</div>
       </div>
-      <div class="nb">
-        ${kcalInfo ? `<strong>${kcalInfo}</strong><br>` : ''}
-        ${entreno !== '—' ? `Días de entreno: ${entreno}` : ''}
-      </div>
+      ${vals ? `<div class="nb">${vals}</div>` : ''}
     </div>`;
   });
-
   (menu.nutricion || []).forEach(n => {
     html += `<div class="nc">
       <div class="nh"><div class="ni">${n.emoji}</div><div class="ntit">${n.titulo}</div></div>
       <div class="nb">${n.texto}</div>
     </div>`;
   });
-  el.innerHTML = html;
+  document.getElementById('tab-nutri').innerHTML = html;
 }
 
-// ═══════════════════════════════════════════════════════
-// HELPERS
-// ═══════════════════════════════════════════════════════
 function showTab(id, btn) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -607,6 +322,8 @@ function ts(el) {
   el.classList.toggle('done');
   el.querySelector('.sc').textContent = el.classList.contains('done') ? '✓' : '';
 }
+
+init();
 </script>
 </body>
 </html>

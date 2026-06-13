@@ -5,6 +5,26 @@
     "subtitulo": "y sin desperdicios",
     "generado": "2025-06-13"
   },
+  "personas": [
+    {
+      "nombre": "CrisV",
+      "color": "#4A7FA5",
+      "color_light": "#E8F2FA",
+      "objetivo": "déficit",
+      "kcal_entreno": 2050,
+      "kcal_descanso": 1850,
+      "proteina": 135
+    },
+    {
+      "nombre": "CrisM",
+      "color": "#5A9E6F",
+      "color_light": "#E6F4EC",
+      "objetivo": "superávit suave",
+      "kcal_entreno": 2200,
+      "kcal_descanso": 2200,
+      "proteina": 110
+    }
+  ],
   "tags": [
     { "texto": "⚡ Máx 15 min de cocina al día", "tipo": "w" },
     { "texto": "🍌 Gastar: plátano · cerezas · cilantro", "tipo": "a" },
