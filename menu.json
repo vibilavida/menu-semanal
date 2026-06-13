@@ -41,18 +41,19 @@
       "comidas": [
         {
           "momento": "Desayuno",
-          "tiempo": "5 min",
-          "nombre": "Tortas de masa madre + pavo + tomate",
-          "descripcion": "Sacar las tortas del congelador la noche anterior o tostar directamente. 2 lonchas de pavo, tomate en rodajas, un hilo de AOVE.",
-          "kcal": "~350 kcal"
+          "tiempo": "2 min",
+          "nombre": "🏢 Sándwich pavo + queso en pan de centeno",
+          "tags_comida": ["oficina"],
+          "descripcion": "Pan centeno del congelador (sacar la noche anterior). 2 lonchas pavo, 1 loncha queso, tomate o pepino. Envolver en papel vegetal y listo para salir.",
+          "kcal": "~380 kcal"
         },
         {
           "momento": "Comida",
-          "tiempo": "3 min",
-          "nombre": "🏢 Sándwich pavo + queso en pan de centeno",
-          "tags_comida": ["oficina"],
-          "descripcion": "Pan centeno del congelador (sacar noche anterior). 2 lonchas pavo, 1 queso, tomate o pepino. Envolver en papel vegetal.",
-          "kcal": "~420 kcal"
+          "tiempo": "40 min (batch)",
+          "nombre": "Estofado de pollo y patata",
+          "tags_comida": ["batch"],
+          "descripcion": "Muslos de pollo, patata en trozos, zanahoria, cebolla, ajo, vino blanco. Vitrocerámica 40 min. Hacer 3 raciones: hoy + martes + domingo.",
+          "kcal": "~550 kcal"
         },
         {
           "momento": "Snack",
@@ -64,11 +65,10 @@
         },
         {
           "momento": "Cena",
-          "tiempo": "40 min (batch)",
-          "nombre": "Estofado de pollo y patata",
-          "tags_comida": ["batch"],
-          "descripcion": "Muslos de pollo, patata en trozos, zanahoria, cebolla, ajo, un chorro de vino blanco. Vitrocerámica 40 min a fuego medio. Hacer 3 raciones: lunes cena + martes tupper + domingo cena.",
-          "kcal": "~550 kcal"
+          "tiempo": "8 min",
+          "nombre": "Tortilla de espinacas + tomate aliñado",
+          "descripcion": "3 huevos, puñado de espinacas salteadas 2 min, tortilla en sartén. Tomate en rodajas con sal, AOVE y orégano al lado.",
+          "kcal": "~350 kcal"
         }
       ]
     },
@@ -86,19 +86,19 @@
           "kcal": "~380 kcal"
         },
         {
-          "momento": "Post-entreno",
-          "tiempo": "1 min",
-          "nombre": "Plátano + huevo duro",
-          "tags_comida": ["gastar"],
-          "descripcion": "Plátano del tirón + huevo duro del batch. Carbos + proteína rápida antes de ducharte.",
-          "kcal": "~200 kcal"
+          "momento": "Desayuno",
+          "tiempo": "2 min",
+          "nombre": "🏢 Sándwich pavo + queso en pan de centeno",
+          "tags_comida": ["oficina"],
+          "descripcion": "Preparar al llegar o antes de salir. Igual que el lunes. En día de entreno, añadir otra loncha de pavo extra para proteína.",
+          "kcal": "~400 kcal"
         },
         {
           "momento": "Comida",
           "tiempo": "3 min micro",
-          "nombre": "🏢 Estofado de pollo del batch / sándwich pavo",
-          "tags_comida": ["batch", "oficina"],
-          "descripcion": "Opción A: tupper con estofado de ayer recalentado (más proteína, mejor para día de entreno). Opción B: sándwich pavo + queso si prefieres algo más cómodo.",
+          "nombre": "Dhal de lentejas rojas con cilantro fresco 🌿",
+          "tags_comida": ["batch", "gastar"],
+          "descripcion": "Dhal del batch recalentado 3 min. Arroz del batch al lado. Cilantro fresco picado encima al servir — no al micro. La comida fuerte del día de entreno.",
           "kcal": "~500 kcal"
         },
         {
@@ -106,16 +106,15 @@
           "nombre": null,
           "snacks_personalizados": [
             { "persona": 0, "texto": "Huevo duro + pepino en rodajas", "kcal": "~130 kcal · 10g prot" },
-            { "persona": 1, "texto": "Tostada centeno + AOVE + huevo revuelto", "kcal": "~320 kcal" }
+            { "persona": 1, "texto": "Tostada centeno + AOVE + plátano 🌿", "tags_comida": ["gastar"], "kcal": "~310 kcal" }
           ]
         },
         {
           "momento": "Cena",
-          "tiempo": "3 min micro",
-          "nombre": "Dhal de lentejas rojas con cilantro fresco 🌿",
-          "tags_comida": ["batch", "gastar"],
-          "descripcion": "Dhal hecho el domingo. Recalentar 3 min en micro. Cilantro fresco picado encima justo antes de servir — no lo cocines, solo al final. Arroz del batch al lado.",
-          "kcal": "~500 kcal"
+          "tiempo": "8 min",
+          "nombre": "Huevos revueltos + tostada de masa madre",
+          "descripcion": "3 huevos revueltos con sal y pimienta en sartén. Torta de masa madre tostada. Rápido, ligero, proteico.",
+          "kcal": "~360 kcal"
         }
       ]
     },
@@ -127,34 +126,34 @@
       "comidas": [
         {
           "momento": "Desayuno",
-          "tiempo": "5 min",
-          "nombre": "Tortas de masa madre + aguacate + huevo cocido",
-          "descripcion": "Tortas del congelador tostadas. Aguacate aplastado con sal y limón, huevo cocido del batch en rodajas encima.",
-          "kcal": "~400 kcal"
+          "tiempo": "2 min",
+          "nombre": "🏢 Sándwich pavo + queso en pan de centeno",
+          "tags_comida": ["oficina"],
+          "descripcion": "Igual que lunes y martes. Pan centeno del congelador, pavo, queso, tomate o pepino.",
+          "kcal": "~380 kcal"
         },
         {
           "momento": "Comida",
-          "tiempo": "3 min",
-          "nombre": "🏢 Sándwich pavo + queso en pan de centeno",
-          "tags_comida": ["oficina"],
-          "descripcion": "Igual que el lunes. Pan centeno, pavo, queso, tomate o pepino.",
-          "kcal": "~420 kcal"
+          "tiempo": "25 min (batch)",
+          "nombre": "Albóndigas en salsa de tomate + arroz",
+          "tags_comida": ["batch"],
+          "descripcion": "Carne picada mixta, ajo, perejil, pan rallado, huevo. Salsa de tomate con cebolla y laurel. Vitrocerámica 25 min. Hacer 4 raciones: hoy + jueves CrisM + 1 congelar.",
+          "kcal": "~540 kcal"
         },
         {
           "momento": "Snack",
           "nombre": null,
           "snacks_personalizados": [
             { "persona": 0, "texto": "Yogur griego + kiwi", "kcal": "~180 kcal · 14g prot" },
-            { "persona": 1, "texto": "Batido: leche entera + yogur + plátano (último) 🌿", "tags_comida": ["gastar"], "kcal": "~340 kcal" }
+            { "persona": 1, "texto": "Batido: leche entera + yogur + avena", "kcal": "~320 kcal" }
           ]
         },
         {
           "momento": "Cena",
-          "tiempo": "25 min (batch)",
-          "nombre": "Albóndigas en salsa de tomate",
-          "tags_comida": ["batch"],
-          "descripcion": "Carne picada mixta (ternera + cerdo), ajo, perejil, pan rallado, huevo. Salsa tomate triturado con cebolla y laurel. Vitrocerámica 25 min. Hacer 4 raciones: miércoles + jueves CrisM + 1 congelar.",
-          "kcal": "~560 kcal"
+          "tiempo": "10 min",
+          "nombre": "Crema de calabacín y puerro + tostada con queso fresco",
+          "descripcion": "Calabacín + puerro + caldo + quesito, vitrocerámica 10 min y batidora. Servir templada o fría. Tostada de centeno con queso fresco por encima — le da cuerpo a la cena.",
+          "kcal": "~380 kcal"
         }
       ]
     },
@@ -167,18 +166,18 @@
       "comidas": [
         {
           "momento": "Desayuno",
-          "tiempo": "3 min",
-          "nombre": "Yogur griego + avena + kiwi",
-          "descripcion": "CrisM. 200g yogur griego, 40g avena, 1 kiwi troceado. Rápido y listo.",
+          "tiempo": "5 min",
+          "nombre": "Tortas masa madre + aguacate aplastado",
+          "descripcion": "CrisM. Tortas del congelador tostadas. Aguacate con sal, limón y AOVE. Sin prisas.",
           "kcal": "~370 kcal"
         },
         {
           "momento": "Comida",
           "tiempo": "3 min micro",
-          "nombre": "Albóndigas del batch + arroz",
+          "nombre": "Albóndigas del batch + ensalada",
           "tags_comida": ["batch"],
-          "descripcion": "CrisM. Recalentar albóndigas 3 min. Arroz del batch. Poner queso rallado por encima si apetece.",
-          "kcal": "~540 kcal"
+          "descripcion": "CrisM. Ración de albóndigas recalentada. Ensalada de bolsa al lado con vinagreta.",
+          "kcal": "~480 kcal"
         },
         {
           "momento": "Snack",
@@ -189,10 +188,10 @@
         },
         {
           "momento": "Cena",
-          "tiempo": "10 min",
-          "nombre": "Crema de calabacín y puerro",
-          "descripcion": "CrisM. Calabacín + puerro + caldo + quesito. Vitrocerámica 10 min y batidora. Servir fría si apetece con el calor. Pan centeno al lado.",
-          "kcal": "~320 kcal"
+          "tiempo": "5 min",
+          "nombre": "Huevos revueltos + tostada de centeno",
+          "descripcion": "CrisM. 2-3 huevos revueltos con sal y pimienta. Tostada centeno. Cena rápida y ligera.",
+          "kcal": "~300 kcal"
         }
       ]
     },
@@ -210,10 +209,10 @@
           "kcal": "~380 kcal"
         },
         {
-          "momento": "Post-entreno",
+          "momento": "Desayuno",
           "tiempo": "5 min",
-          "nombre": "Huevo revuelto + torta de masa madre",
-          "descripcion": "2 huevos revueltos rápidos en sartén + torta tostada. Proteína antes de empezar el día.",
+          "nombre": "Torta masa madre + huevo revuelto",
+          "descripcion": "Post-entreno en casa. 2 huevos revueltos rápidos en sartén + torta tostada. Proteína antes de empezar el día.",
           "kcal": "~340 kcal"
         },
         {
@@ -221,7 +220,7 @@
           "tiempo": "20 min",
           "nombre": "🍝 Pasta con chorizo y tomate",
           "descripcion": "LA TRADICIÓN. Pasta al dente, chorizo ibérico en rodajas salteado en sartén, tomate triturado, ajo, AOVE. Parmesano al final. La de siempre.",
-          "kcal": "~650 kcal"
+          "kcal": "~620 kcal"
         },
         {
           "momento": "Snack",
@@ -234,9 +233,9 @@
         {
           "momento": "Cena",
           "tiempo": "5 min",
-          "nombre": "Ensalada de garbanzos + atún",
-          "descripcion": "Garbanzos de bote escurridos, 2 latas atún, tomate cherry, pepino, vinagreta de mostaza y limón. Cena ligera después de la pasta del mediodía.",
-          "kcal": "~380 kcal"
+          "nombre": "Ensalada de atún + tomate + pepino",
+          "descripcion": "2 latas de atún al natural, tomate cherry, pepino, vinagreta de mostaza y limón. Sin cocinar, sin legumbres. Ligera después de la pasta del mediodía.",
+          "kcal": "~280 kcal"
         }
       ]
     },
@@ -250,30 +249,30 @@
           "momento": "Desayuno",
           "tiempo": "10 min",
           "nombre": "Pan casero tostado + huevos revueltos + tomate",
-          "descripcion": "El desayuno del finde. Pan casero del congelador tostado, 2 huevos revueltos con sal y pimienta, tomate en rodajas con AOVE.",
+          "descripcion": "El desayuno del finde sin prisas. Pan casero del congelador tostado, 2 huevos revueltos, tomate en rodajas con AOVE.",
           "kcal": "~440 kcal"
         },
         {
           "momento": "Comida",
           "tiempo": "15 min",
           "nombre": "Hamburguesas caseras de ternera + ensalada",
-          "descripcion": "Carne picada de ternera, sal, pimienta, ajo en polvo. Vitrocerámica a fuego alto. Pan de centeno tostado, mostaza, lechuga, tomate. Ensalada verde al lado.",
-          "kcal": "~600 kcal"
+          "descripcion": "Carne picada ternera, sal, pimienta, ajo en polvo. Vitrocerámica fuego alto. Pan centeno tostado, mostaza, lechuga, tomate. Ensalada verde al lado.",
+          "kcal": "~580 kcal"
         },
         {
           "momento": "Snack",
           "nombre": null,
           "snacks_personalizados": [
-            { "persona": 0, "texto": "Yogur griego + fruta de temporada", "kcal": "~170 kcal · 14g prot" },
+            { "persona": 0, "texto": "Yogur griego + kiwi", "kcal": "~170 kcal · 14g prot" },
             { "persona": 1, "texto": "Tostada + aguacate + sal maldon + AOVE", "kcal": "~280 kcal" }
           ]
         },
         {
           "momento": "Cena",
           "tiempo": "12 min",
-          "nombre": "Salmón air fryer + espinacas salteadas",
-          "descripcion": "Salmón 180°C 12 min en air fryer con AOVE y limón. Espinacas en sartén 5 min con ajo. Limón por encima de todo.",
-          "kcal": "~480 kcal"
+          "nombre": "Salmón air fryer + ensalada verde",
+          "descripcion": "150g salmón a 180°C 12 min en air fryer con AOVE y limón. Ensalada de bolsa con vinagreta. Cena ligera y proteica.",
+          "kcal": "~380 kcal"
         }
       ]
     },
@@ -287,15 +286,23 @@
           "momento": "Pre-entreno",
           "tiempo": "2 min",
           "nombre": "Yogur griego + avena + fruta",
-          "descripcion": "Antes de salir a las 9:30. Rápido, sin cocinar. El cuerpo lo agradece.",
+          "descripcion": "Antes de salir a las 9:30. Rápido, sin cocinar.",
           "kcal": "~370 kcal"
         },
         {
           "momento": "Post-entreno",
           "tiempo": "10 min",
           "nombre": "Brunch + arrancar el batch",
-          "descripcion": "Huevos revueltos + tortas de masa madre mientras la olla del estofado ya está al fuego. Multitarea del domingo.",
-          "kcal": "~480 kcal"
+          "descripcion": "Huevos revueltos + tortas de masa madre mientras la olla ya está al fuego. Multitarea del domingo.",
+          "kcal": "~460 kcal"
+        },
+        {
+          "momento": "Comida",
+          "tiempo": "3 min micro",
+          "nombre": "Estofado de pollo del batch + arroz",
+          "tags_comida": ["batch"],
+          "descripcion": "Última ración del estofado. Recalentar micro. El batch pagando dividendos hasta el final.",
+          "kcal": "~520 kcal"
         },
         {
           "momento": "Snack",
@@ -307,11 +314,10 @@
         },
         {
           "momento": "Cena",
-          "tiempo": "2 min micro",
-          "nombre": "Estofado de pollo del batch + arroz",
-          "tags_comida": ["batch"],
-          "descripcion": "La última ración del estofado que hiciste el lunes. Recalentar micro. El batch pagando dividendos.",
-          "kcal": "~520 kcal"
+          "tiempo": "5 min",
+          "nombre": "Tortilla de patata mini + pepino",
+          "descripcion": "2 huevos + patata cocida del batch aplastada en sartén. Pepino en rodajas al lado. Cena ligera para cerrar la semana.",
+          "kcal": "~320 kcal"
         }
       ]
     }
